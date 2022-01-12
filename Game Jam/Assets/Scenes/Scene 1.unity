@@ -1756,7 +1756,7 @@ MonoBehaviour:
   playerInput: {fileID: 0}
   input: {x: 0, y: 0}
   move: {x: 0, y: 0, z: 0}
-  isGliding: 0
+  invertedCommands: 0
 --- !u!114 &1522853143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1772,6 +1772,7 @@ MonoBehaviour:
   imageNut: {fileID: 1147718998}
   nut: {fileID: 8852318869215647793, guid: 3747f47e367c23f419957d53fbd4d2da, type: 3}
   nutFixed: {fileID: 8707002117119340646, guid: f31b764dec8a9df4683684736a438b47, type: 3}
+  nutRespawn: 0
 --- !u!1 &2060977054
 GameObject:
   m_ObjectHideFlags: 0
@@ -1878,6 +1879,10 @@ PrefabInstance:
     - target: {fileID: 8707002117119340646, guid: f31b764dec8a9df4683684736a438b47, type: 3}
       propertyPath: m_Name
       value: NutFixed
+      objectReference: {fileID: 0}
+    - target: {fileID: 8707002117119340646, guid: f31b764dec8a9df4683684736a438b47, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8707002117119340646, guid: f31b764dec8a9df4683684736a438b47, type: 3}
       propertyPath: m_TagString

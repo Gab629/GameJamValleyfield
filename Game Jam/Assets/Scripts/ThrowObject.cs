@@ -24,7 +24,7 @@ public class ThrowObject : MonoBehaviour
     private Vector3 nutFixedPosition;
     private Quaternion nutFixedRotation;
 
-
+    [SerializeField] private bool nutRespawn = false;
 
     //Variables pour les directions de lancer du personnage
     private float currentValue;
@@ -170,18 +170,29 @@ public class ThrowObject : MonoBehaviour
         RaycastHit hit;
         Physics.Raycast(transform.position, transform.forward, out hit, 0.7f);
 
+        if(nutRespawn == true && isThrowing == 1){
+                Invoke("RespawnNut", 3.5f);
+                nutRespawn = false;
+                
+        }
+
         if(hit.transform.tag == "Nut"){
            nutLoaded = true;
            nutFixedPosition = hit.transform.position; 
-           nutFixedRotation = hit.transform.rotation; 
-           Invoke("RespawnNut", 3.5f);
+           nutFixedRotation = hit.transform.rotation;
+
+            
+           nutRespawn = true;
+
         }
+        
     }
 
-    
+   
 
     //------- Cette fonction sert a faire reaparaitre la noix prise par le joueur -------//
     private void RespawnNut(){
+        
         Instantiate(nutFixed, nutFixedPosition, nutFixedRotation);
     }
     

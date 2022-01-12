@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Noix : MonoBehaviour
 {
-    //public GameObject damageEffect;
     public float damageAmount;
 
     private void OnTriggerEnter(Collider other) {
@@ -15,12 +14,4 @@ public class Noix : MonoBehaviour
         }
 
     }
-
-/*     private void OnCollisionEnter(Collision col) {
-        if (col.gameObject.tag == "Ennemy") {
-            col.gameObject.GetComponent<Ennemy>().TakeDamage(damageAmount);
-            Destroy(gameObject);
-        }
-
-    } */
 }

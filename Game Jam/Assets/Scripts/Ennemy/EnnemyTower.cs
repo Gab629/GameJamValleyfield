@@ -6,19 +6,18 @@ using UnityEngine.UI; //
 public class EnnemyTower : MonoBehaviour
 {
 
-    // Pour detecter l'etat de l'ennemi
-    private string currentState = "Idle";
+    // Pour detecter le joueur
     private Transform target;
-
-    // Canvas object
-    public Slider slider;
-
+    
     private bool isSeeingPlayer = false;
     private bool playerLeft = false;
 
     public float attackRange = 6f;
 
-    //TEST
+    // Pour la vie
+    public Slider slider;
+
+    //Pour l'attaque
     public GameObject waterDrop;
 
     private bool isThrowing = false;
@@ -26,13 +25,12 @@ public class EnnemyTower : MonoBehaviour
     private Vector3 waterFixedPosition;
     private Quaternion waterFixedRotation;
 
-/*     private float currentValue;
-    private float previousValue; */
     private Vector2 throwDirection;
-    //
 
 
-    // Start is called before the first frame update
+    // ============================== **
+    // Methode Start()
+    // ============================== **
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
@@ -40,33 +38,27 @@ public class EnnemyTower : MonoBehaviour
         AttackDetector();
     }
 
-    // Update is called once per frame
+    // ============================== **
+    // Methode Update()
+    // ============================== **
     void Update() {
         float distance = Vector3.Distance(transform.position, target.position);
 
         if (isSeeingPlayer) {
              if (target.position.x > transform.position.x) {
-                //vers la droite
+                // vers la droite
                 transform.rotation = Quaternion.Euler(0,0,0);
-
                 slider.direction = Slider.Direction.LeftToRight;
-                Debug.Log("vers la droite");
-
-                //TEST
                 throwDirection = new Vector2(1,0);
 
             } else {
-                //vers la gauche
+                // vers la gauche
                 transform.rotation = Quaternion.Euler(0,180,0);
-
                 slider.direction = Slider.Direction.RightToLeft;
-                Debug.Log("vers la gauche");
-
-                //TEST
                 throwDirection = new Vector2(-1,0);
             }
 
-
+            // Detecte si le joueur est sortie du champ de vision
             if (distance > attackRange) {
                 isSeeingPlayer = false;
                 Invoke("RotateEnemyLeft", 2f); 
@@ -74,15 +66,20 @@ public class EnnemyTower : MonoBehaviour
 
             }
 
+            // Determine si le gameObject peut attaquer
             if (isThrowing) {
                 Attack();
-
                 isThrowing = false;
             }
         }
 
     }
 
+    // ============================== **
+    // Methode RotateEnemyRight()
+    // Tourne le gameObject vers la droite
+    // Mode Idle
+    // ============================== **
     private void RotateEnemyRight() {
         transform.rotation =  Quaternion.Euler(0, 180, 0);
         slider.direction = Slider.Direction.RightToLeft;
@@ -93,6 +90,11 @@ public class EnnemyTower : MonoBehaviour
 
     }
 
+    // ============================== **
+    // Methode RotateEnemyLeft()
+    // Tourne le gameObject vers la gauche
+    // Mode Idle
+    // ============================== **
     private void RotateEnemyLeft() {
         transform.rotation =  Quaternion.Euler(0, 0, 0);
         slider.direction = Slider.Direction.LeftToRight;
@@ -102,23 +104,32 @@ public class EnnemyTower : MonoBehaviour
         }
     }
 
+    // ============================== **
+    // Methode OnTriggerEnter()
+    // Detecte le joueur
+    // ============================== **
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "Player") {
             isSeeingPlayer = true;
-            //AttackDetector();
-            Debug.Log("detecte le joueur");
         }
 
     }
 
 
-    //TEST
+    // ============================== **
+    // Methode AttackDetector()
+    // Invoke l'attaque du gameObject
+    // ============================== **
     private void AttackDetector() {
         isThrowing = true;
 
         Invoke("AttackDetector", 1f);
     }
 
+    // ============================== **
+    // Methode Attack()
+    // Attaque du GameObject
+    // ============================== **
     private void Attack() {
         Vector3 positionWaterLeft = new Vector3(gameObject.transform.position.x - 1, gameObject.transform.position.y, gameObject.transform.position.z);
         Vector3 positionWaterRight = new Vector3(gameObject.transform.position.x + 1, gameObject.transform.position.y, gameObject.transform.position.z);
@@ -135,6 +146,10 @@ public class EnnemyTower : MonoBehaviour
 
     }
 
+    // ============================== **
+    // Methode DestroyWaterDrop()
+    // Detruit les waterDrop
+    // ============================== **
     private void DestroyWaterDrop() {
         GameObject waterDropInstantiate = GameObject.FindGameObjectWithTag("WaterThrowed");
         Destroy(waterDropInstantiate);

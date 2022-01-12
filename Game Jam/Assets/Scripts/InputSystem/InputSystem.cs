@@ -41,6 +41,14 @@ public class @InputSystem : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Tap""
+                },
+                {
+                    ""name"": ""Gliding"",
+                    ""type"": ""Button"",
+                    ""id"": ""cb652c86-058a-4a6b-ab04-95a0a82e3cc9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold""
                 }
             ],
             ""bindings"": [
@@ -54,28 +62,6 @@ public class @InputSystem : IInputActionCollection, IDisposable
                     ""action"": ""Movements"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""499bd2ec-d05f-49bb-a7de-934ccb37f470"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movements"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""a6fe2766-fc0a-45bd-9086-f68ae0c34f61"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movements"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""left"",
@@ -101,6 +87,17 @@ public class @InputSystem : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""2cefa732-3ffd-4dc2-86fe-fdf60987a69d"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movements"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""ddc0ff45-fbe0-4d88-8548-2241dfe95446"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
@@ -112,12 +109,45 @@ public class @InputSystem : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""b78a6488-c264-4fe8-8d4a-0920a783c4db"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""4297c3c3-7b7d-4fcb-aa5e-6ed07ad3ee49"",
-                    ""path"": ""<Keyboard>/e"",
+                    ""path"": ""<Keyboard>/shift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a847cd4f-283b-4377-b595-7a59e3874a9f"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""860c2c38-bc63-406d-ae18-4afacede7282"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Gliding"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -199,10 +229,13 @@ public class @InputSystem : IInputActionCollection, IDisposable
         m_PlayerMovements_Movements = m_PlayerMovements.FindAction("Movements", throwIfNotFound: true);
         m_PlayerMovements_Jump = m_PlayerMovements.FindAction("Jump", throwIfNotFound: true);
         m_PlayerMovements_Dash = m_PlayerMovements.FindAction("Dash", throwIfNotFound: true);
+        m_PlayerMovements_Gliding = m_PlayerMovements.FindAction("Gliding", throwIfNotFound: true);
         // ThrowNut
         m_ThrowNut = asset.FindActionMap("ThrowNut", throwIfNotFound: true);
         m_ThrowNut_Throw = m_ThrowNut.FindAction("Throw", throwIfNotFound: true);
         m_ThrowNut_Direction = m_ThrowNut.FindAction("Direction", throwIfNotFound: true);
+        
+        
     }
 
     public void Dispose()
@@ -255,6 +288,7 @@ public class @InputSystem : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerMovements_Movements;
     private readonly InputAction m_PlayerMovements_Jump;
     private readonly InputAction m_PlayerMovements_Dash;
+    private readonly InputAction m_PlayerMovements_Gliding;
     public struct PlayerMovementsActions
     {
         private @InputSystem m_Wrapper;
@@ -262,6 +296,7 @@ public class @InputSystem : IInputActionCollection, IDisposable
         public InputAction @Movements => m_Wrapper.m_PlayerMovements_Movements;
         public InputAction @Jump => m_Wrapper.m_PlayerMovements_Jump;
         public InputAction @Dash => m_Wrapper.m_PlayerMovements_Dash;
+        public InputAction @Gliding => m_Wrapper.m_PlayerMovements_Gliding;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMovements; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -280,6 +315,9 @@ public class @InputSystem : IInputActionCollection, IDisposable
                 @Dash.started -= m_Wrapper.m_PlayerMovementsActionsCallbackInterface.OnDash;
                 @Dash.performed -= m_Wrapper.m_PlayerMovementsActionsCallbackInterface.OnDash;
                 @Dash.canceled -= m_Wrapper.m_PlayerMovementsActionsCallbackInterface.OnDash;
+                @Gliding.started -= m_Wrapper.m_PlayerMovementsActionsCallbackInterface.OnGliding;
+                @Gliding.performed -= m_Wrapper.m_PlayerMovementsActionsCallbackInterface.OnGliding;
+                @Gliding.canceled -= m_Wrapper.m_PlayerMovementsActionsCallbackInterface.OnGliding;
             }
             m_Wrapper.m_PlayerMovementsActionsCallbackInterface = instance;
             if (instance != null)
@@ -293,6 +331,9 @@ public class @InputSystem : IInputActionCollection, IDisposable
                 @Dash.started += instance.OnDash;
                 @Dash.performed += instance.OnDash;
                 @Dash.canceled += instance.OnDash;
+                @Gliding.started += instance.OnGliding;
+                @Gliding.performed += instance.OnGliding;
+                @Gliding.canceled += instance.OnGliding;
             }
         }
     }
@@ -343,6 +384,7 @@ public class @InputSystem : IInputActionCollection, IDisposable
         void OnMovements(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
+        void OnGliding(InputAction.CallbackContext context);
     }
     public interface IThrowNutActions
     {

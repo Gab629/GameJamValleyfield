@@ -18,7 +18,11 @@ public class Mouvements : MonoBehaviour
     [SerializeField] private int wallTouched = 0;
     private float isJumping;   
     [SerializeField] private int multipleJump = 2;
-    private bool jumpCancelled = false;
+    [SerializeField] private bool jumpCancelled = false;
+
+    private int multipleJumpCounter = 0;
+
+    [SerializeField] private bool JumpBool = false;
 
     [SerializeField] private int multipleJumpCounter = 0;
   
@@ -32,6 +36,7 @@ public class Mouvements : MonoBehaviour
     private float playerSpeed = 3f;
     public Vector2 input;
     public Vector3 move;
+    
 
 
     //Variables pour le nouveau input system
@@ -52,16 +57,13 @@ public class Mouvements : MonoBehaviour
 
         //Permet d'aller chercher les inputs des touches pour le mouvement
         inputActions.PlayerMovements.Movements.performed += MovementsCharacter;
-        //Remet les valeur a 0 lorsqu'on relache la touche
-        inputActions.PlayerMovements.Movements.canceled += MovementsCharacter; 
-
+         //Remet les valeur a 0 lorsqu'on relache la touche
+        inputActions.PlayerMovements.Movements.canceled += MovementsCharacter;
+        
         //Permet d'aller chercher les inputs des touches pour le saut
         inputActions.PlayerMovements.Jump.performed += JumpButton;
         //Remet les valeur a 0 lorsqu'on relache la touche
         inputActions.PlayerMovements.Jump.canceled += JumpButton;
-
-        //Appelle la fonction JumpButtonCancelled lorsqu'on relache espace
-        inputActions.PlayerMovements.Jump.canceled += JumpButtonCanceled; 
         
         //Permet d'aller chercher les inputs des touches pour le saut
         inputActions.PlayerMovements.Dash.performed += DashCharacter;
@@ -95,36 +97,48 @@ public class Mouvements : MonoBehaviour
     void FixedUpdate()
     {
         Jump();
+        
         DoubleJump(); //COMP DOUBLE JUMP
+
     }
 
 
-
+    
     //------- Cette fonction detecte si le bouton Espace est enfonce -------//
     private void JumpButton(InputAction.CallbackContext context)
     {
-        isJumping = context.ReadValue<float>();
+        
+        // isJumping = context.ReadValue<float>();
+        JumpBool = true;
+        
+        Invoke("LessJumpMultiple", 0.05f);
+        Invoke("JumpButtonCanceled", 0.5f);
         
     }
-
-    //------- Cette fonction detecte si le bouton Espace est relache -------//
-    private void JumpButtonCanceled(InputAction.CallbackContext context)
-    {
+    //------- Cette fonction reduit le nombre de multipleJump -------//
+    private void LessJumpMultiple(){
+        
         multipleJump --;
+    }
+    //------- Cette fonction est call sert à remettre les bools pour doubleJump -------//
+    private void JumpButtonCanceled()
+    {
+        
         jumpCancelled = true;
+        JumpBool = false;
     }
 
     //------- Cette fonction fait sauter le personnage -------//
     private void Jump()
     {
-        if (isJumping == 1 && controller.isGrounded){
+        if (JumpBool == true && controller.isGrounded){
            playerVelocity.y += jumpForce * Time.deltaTime;
         }
-        else if (isJumping == 0 && controller.isGrounded)
+        else if (JumpBool == false && controller.isGrounded)
         {
             playerVelocity.y = 0f;
         }
-        else if(isJumping == 0 && controller.isGrounded != true)
+        else if(JumpBool == false && controller.isGrounded != true)
         {
              playerVelocity.y -= fallingSpeed * Time.deltaTime;
         }
@@ -135,14 +149,15 @@ public class Mouvements : MonoBehaviour
     private void DoubleJump(){
 
         //Si le joueur appuie sur espace, si il lui reste des sauts et qu'il a deja relacher espace une fois
-        if(isJumping == 1 && multipleJump >= 0 && jumpCancelled && wallTouched != 0){
+        
+        if(JumpBool == true && multipleJump >= 0 && jumpCancelled && wallTouched != 0){
             //Le joueur peut sauter a nouveau dans les airs
             playerVelocity.y += doubleJumpForce * Time.deltaTime;
             //Le saut est pris en compte dans une variable
             multipleJumpCounter ++;
             Debug.Log("Double jump");
 
-        }else if(wallTouched >= 0 && isJumping == 1)
+        }else if(wallTouched >= 0 && JumpBool == true)
         {
             playerVelocity.y += doubleJumpForce * Time.deltaTime;
             wallTouched --;
@@ -154,6 +169,12 @@ public class Mouvements : MonoBehaviour
         if(multipleJumpCounter >= 1){
             //Le joueur ne peut pas sauter a nouveau
             jumpCancelled = false;
+        }
+        if(multipleJump >= 2){
+            jumpCancelled = false;
+        }
+        if(multipleJump <= 0){
+            multipleJump = 0;
         }
     }
 

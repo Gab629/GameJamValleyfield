@@ -32,7 +32,7 @@ public class @InputSystem : IInputActionCollection, IDisposable
                     ""id"": ""034085a9-2f53-4fa5-89e2-d7ec4d13eaa4"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """"
+                    ""interactions"": ""Tap""
                 },
                 {
                     ""name"": ""Dash"",

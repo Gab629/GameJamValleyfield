@@ -5,6 +5,14 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class Mouvements : MonoBehaviour
 {
+
+    // ============================== **
+    // SOURCES DES TUTORIELS
+    // ==============================
+    // Video URL : https://www.youtube.com/watch?v=hC1QZ0h4oco (conveyor)
+    // ============================== **
+
+
     // Variables pour les components du personnage
     private CharacterController controller;
     public PlayerInput playerInput;
@@ -12,7 +20,7 @@ public class Mouvements : MonoBehaviour
     private Rigidbody rbCharacter;
     
 
-    // Variables pour la detection de sol/murs, la gravite et le statut de jump du personnage
+    // Variables pour la detection de sol/murs, la gravite et le statut du personnage
     private float gravityValue = -9f;
     private bool groundedPlayer;
     private int wallTouched = 0;
@@ -32,7 +40,8 @@ public class Mouvements : MonoBehaviour
     private float playerSpeed = 3f;
     public Vector2 input;
     public Vector3 move;
-    
+    private int onConveyor = 0;
+    private float onConveyorSpeed = 2f;
 
 
     //Variables pour le nouveau input system
@@ -46,8 +55,15 @@ public class Mouvements : MonoBehaviour
 
     //Variable pour le gliding
     private float glidingSpeed = -100f;
+    private float isGliding;
 
-    [SerializeField] private float isGliding;
+
+    //Variable pour les commandes inversés
+    private bool invertedCommands = false;
+
+
+
+
     //------- Cette fonction est appelle avant le start -------//
     private void Awake()
     {
@@ -84,6 +100,12 @@ public class Mouvements : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         controller = GetComponent<CharacterController>();
         rbCharacter = GetComponent<Rigidbody>();
+
+        
+        // calculate the correct vertical position:
+        float correctHeight = controller.center.y + controller.skinWidth;
+        // set the controller center vector:
+        controller.center = new Vector3(0, correctHeight, 0);
     }
 
 
@@ -91,11 +113,10 @@ public class Mouvements : MonoBehaviour
     //------- Update is called once per frame -------//
     void Update()
     {   
-        Gliding(); //COMP GLIDING
         Movements();
+        Gliding(); //COMP GLIDING
         Dash(); //COMP DASH
         WallSlide(); //COMP WALLSLIDE
-        
     }
 
 
@@ -105,11 +126,62 @@ public class Mouvements : MonoBehaviour
     {
         Jump();
         DoubleJump(); //COMP DOUBLE JUMP
+        OnConveyor();
 
     }
 
 
-    
+
+    void OnCollisionEnter(Collision collision){
+        if(collision.transform.tag == "convLeft")
+        {
+            onConveyor = -1;
+            playerSpeed = 0.1f;
+        }
+        else if(collision.transform.tag == "convRight")
+        {
+            onConveyor = 1;
+            playerSpeed = 0.1f;
+        }
+    }
+
+    void OnCollisionExit(Collision collision){
+        if(collision.transform.tag == "convLeft" || collision.transform.tag == "convRight")
+        {
+            onConveyor = 0;
+            playerSpeed = 3f;
+        }
+    }
+
+    private void OnConveyor(){
+        if(onConveyor == -1)
+        {
+            playerVelocity.x -= onConveyorSpeed * Time.deltaTime;
+
+            if(playerVelocity.x <= -onConveyorSpeed)
+            {
+                 playerVelocity.x = -onConveyorSpeed;
+            }
+
+        }
+        else if(onConveyor == 1)
+        {
+            playerVelocity.x += onConveyorSpeed * Time.deltaTime;
+
+            if(playerVelocity.x >= onConveyorSpeed)
+            {
+                 playerVelocity.x = onConveyorSpeed;
+            }
+
+        }
+        else
+        {
+            playerVelocity.x = 0f;
+        }
+    }
+
+
+
     //------- Cette fonction detecte si le bouton Espace est enfonce -------//
     private void JumpButton(InputAction.CallbackContext context)
     {
@@ -120,11 +192,17 @@ public class Mouvements : MonoBehaviour
         Invoke("JumpButtonCanceled", 0.05f);
         
     }
+
+
+
     //------- Cette fonction reduit le nombre de multipleJump -------//
     private void LessJumpMultiple(){
         
         multipleJump --;
     }
+
+
+
     //------- Cette fonction est call sert à remettre les bools pour doubleJump -------//
     private void JumpButtonCanceled()
     {
@@ -132,6 +210,8 @@ public class Mouvements : MonoBehaviour
         jumpCancelled = true;
         JumpBool = false;
     }
+
+
 
     //------- Cette fonction fait sauter le personnage -------//
     private void Jump()
@@ -156,11 +236,12 @@ public class Mouvements : MonoBehaviour
  
     }
 
+
+
     //------- Cette fonction permet de faire un double saut -------//
     private void DoubleJump(){
 
         //Si le joueur appuie sur espace, si il lui reste des sauts et qu'il a deja relacher espace une fois
-        
         if(JumpBool == true && multipleJump >= 0 && jumpCancelled && wallTouched <= 0){
             //Le joueur peut sauter a nouveau dans les airs
             playerVelocity.y += doubleJumpForce * Time.deltaTime;
@@ -176,7 +257,6 @@ public class Mouvements : MonoBehaviour
             wallTouched --;
         }
 
-
         //Si le compteur de saut est plus grand que 1
         if(multipleJumpCounter >= 1){
             //Le joueur ne peut pas sauter a nouveau
@@ -189,6 +269,8 @@ public class Mouvements : MonoBehaviour
             multipleJump = 0;
         }
     }
+
+
 
 //------- Cette fonction permet de faire une glissade sur le mur -------//
     private void WallSlide(){
@@ -208,6 +290,8 @@ public class Mouvements : MonoBehaviour
         
     }
 
+
+
     //------- Cette fonction detecte si le bouton droit de la souris est enfonce -------//
     private void GlidingCharacter(InputAction.CallbackContext context){
             isGliding = context.ReadValue<float>();
@@ -221,10 +305,7 @@ public class Mouvements : MonoBehaviour
     }
 
 
-    
-
-
-
+  
     //------- Cette fonction detecte si le bouton shift est enfonce -------//
     private void DashCharacter(InputAction.CallbackContext context){
         dashBool = true;
@@ -235,14 +316,21 @@ public class Mouvements : MonoBehaviour
     }
     //------- Cette fonction permet au personnage de dasher -------//
     private void Dash(){
-        if(dashBool == true){
-             move = new Vector3(input.x, 0, 0) * dashSpeed;
+
+        if(dashBool == true && !invertedCommands)
+        {
+            move = new Vector3(input.x, 0, 0) * dashSpeed;
+            controller.Move(move * Time.deltaTime * playerSpeed);
+        }
+        else if(dashBool == true && invertedCommands)
+        {
+            move = new Vector3(-input.x, 0, 0) * dashSpeed;
             controller.Move(move * Time.deltaTime * playerSpeed);
         }
     }
 
 
-     //------- Cette fonction detecte si les boutons WASD sont enfonce -------//
+    //------- Cette fonction detecte si les boutons WASD sont enfonce -------//
     private void MovementsCharacter(InputAction.CallbackContext context)
     {
         input = context.ReadValue<Vector2>();
@@ -262,17 +350,40 @@ public class Mouvements : MonoBehaviour
             wallTouched = 0;
         } 
         
-        //Bouge le joueur dans une direction choisie plus bas
-        gameObject.transform.forward = move;
-        //Met les inputs choisis dans la variable move (boutons enfonces)
-        move = new Vector3(input.x, 0, 0);
-        //Bouge le joueur dans la direction definie par le move
-        controller.Move(move * Time.deltaTime * playerSpeed);
+        if(!invertedCommands){
+            //Rotationne le personnage dans la direction voulu
+            if(input.x >= 1){
+                transform.eulerAngles = new Vector3(0.0f, 90f, 0.0f);
+            }else if(input.x <= -1){
+                transform.eulerAngles = new Vector3(0.0f, 270f, 0.0f);
+            }
+            //Met les inputs choisis dans la variable move (boutons enfonces)
+            move = new Vector3(input.x, 0, 0);
+            //Bouge le joueur dans la direction definie par le move
+            controller.Move(move * Time.deltaTime * playerSpeed);
 
-        //Permet au joueur detre affecte par la gravite
-        playerVelocity.y += gravityValue * Time.deltaTime;
-        //Permet au joueur detre affecte par sa velocite
-        controller.Move(playerVelocity * Time.deltaTime);  
+            //Permet au joueur detre affecte par la gravite
+            playerVelocity.y += gravityValue * Time.deltaTime;
+            //Permet au joueur detre affecte par sa velocite
+            controller.Move(playerVelocity * Time.deltaTime);    
+        }else{
+            //Rotationne le personnage dans la direction voulu
+            if(input.x >= 1){
+                transform.eulerAngles = new Vector3(0.0f, 90f, 0.0f);
+            }else if(input.x <= -1){
+                transform.eulerAngles = new Vector3(0.0f, 270f, 0.0f);
+            }
+            //Met les inputs choisis dans la variable move (boutons enfonces)
+            move = new Vector3(-input.x, 0, 0);
+            //Bouge le joueur dans la direction definie par le move
+            controller.Move(move * Time.deltaTime * playerSpeed);
+
+            //Permet au joueur d'etre affecte par la gravite
+            playerVelocity.y += gravityValue * Time.deltaTime;
+            //Permet au joueur d'etre affecte par sa velocite
+            controller.Move(playerVelocity * Time.deltaTime);    
+        }
+        
     }
 
     

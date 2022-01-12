@@ -13,20 +13,31 @@ public class EnnemyTower : MonoBehaviour
     // Canvas object
     public Slider slider;
 
-    // TEST
     private bool isSeeingPlayer = false;
     private bool playerLeft = false;
 
     public float attackRange = 6f;
 
+    //TEST
+    public GameObject waterDrop;
+
+    private bool isThrowing = false;
+
+    private Vector3 waterFixedPosition;
+    private Quaternion waterFixedRotation;
+
+/*     private float currentValue;
+    private float previousValue; */
+    private Vector2 throwDirection;
     //
-    private int i = 0;
+
 
     // Start is called before the first frame update
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
         RotateEnemyRight();
+        AttackDetector();
     }
 
     // Update is called once per frame
@@ -41,12 +52,18 @@ public class EnnemyTower : MonoBehaviour
                 slider.direction = Slider.Direction.LeftToRight;
                 Debug.Log("vers la droite");
 
+                //TEST
+                throwDirection = new Vector2(1,0);
+
             } else {
                 //vers la gauche
                 transform.rotation = Quaternion.Euler(0,180,0);
 
                 slider.direction = Slider.Direction.RightToLeft;
                 Debug.Log("vers la gauche");
+
+                //TEST
+                throwDirection = new Vector2(-1,0);
             }
 
 
@@ -54,52 +71,21 @@ public class EnnemyTower : MonoBehaviour
                 isSeeingPlayer = false;
                 Invoke("RotateEnemyLeft", 2f); 
                 Debug.Log("joueur perdu");
+
+            }
+
+            if (isThrowing) {
+                Attack();
+
+                isThrowing = false;
             }
         }
 
-
-    //
-/*         while (i > 1) {
-            RotateEnemyRight();
-            Debug.Log(i);
-            i = 0;
-            Debug.Log(i);
-        } */
     }
 
-
-/*     void Update()
-    {
-        CheckState();
-    }
-
-    private void CheckState() {
-        float distance = Vector3.Distance(transform.position, target.position);
-
-
-    } */
-
-    //TEST
     private void RotateEnemyRight() {
         transform.rotation =  Quaternion.Euler(0, 180, 0);
         slider.direction = Slider.Direction.RightToLeft;
-
-/*         while (isSeeingPlayer) {
-             if (target.position.x > transform.position.x) {
-                //vers la droite
-                transform.rotation = Quaternion.Euler(0,0,0);
-
-                slider.direction = Slider.Direction.LeftToRight;
-                Debug.Log("vers la droite");
-
-            } else {
-                //vers la gauche
-                transform.rotation = Quaternion.Euler(0,180,0);
-
-                slider.direction = Slider.Direction.RightToLeft;
-                Debug.Log("vers la gauche");
-            }
-        } */
 
         if (!isSeeingPlayer) {
             Invoke("RotateEnemyLeft", 2f); 
@@ -111,23 +97,6 @@ public class EnnemyTower : MonoBehaviour
         transform.rotation =  Quaternion.Euler(0, 0, 0);
         slider.direction = Slider.Direction.LeftToRight;
 
-/*         while (isSeeingPlayer) {
-             if (target.position.x > transform.position.x) {
-                //vers la droite
-                transform.rotation = Quaternion.Euler(0,0,0);
-
-                slider.direction = Slider.Direction.LeftToRight;
-                Debug.Log("vers la droite");
-
-            } else {
-                //vers la gauche
-                transform.rotation = Quaternion.Euler(0,180,0);
-
-                slider.direction = Slider.Direction.RightToLeft;
-                Debug.Log("vers la gauche");
-            }
-        } */
-
         if (!isSeeingPlayer) {
             Invoke("RotateEnemyRight", 2f);
         }
@@ -136,42 +105,40 @@ public class EnnemyTower : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "Player") {
             isSeeingPlayer = true;
+            //AttackDetector();
             Debug.Log("detecte le joueur");
         }
 
     }
 
-/*     private void OnTriggerExit(Collider other) {
-        if (other.tag == "Player") {
-            isSeeingPlayer = false;
-            Invoke("RotateEnemyRight", 2f);
-            Debug.Log("joueur parti");
+
+    //TEST
+    private void AttackDetector() {
+        isThrowing = true;
+
+        Invoke("AttackDetector", 1f);
+    }
+
+    private void Attack() {
+        Vector3 positionWaterLeft = new Vector3(gameObject.transform.position.x - 1, gameObject.transform.position.y, gameObject.transform.position.z);
+        Vector3 positionWaterRight = new Vector3(gameObject.transform.position.x + 1, gameObject.transform.position.y, gameObject.transform.position.z);
+            
+        if(throwDirection.x == 1){
+            Instantiate(waterDrop, positionWaterRight, gameObject.transform.rotation).GetComponent<Rigidbody>().AddForce(transform.right * 1000f);
+            Invoke("DestroyWaterDrop", 1f);
         }
-    } */
-
-/*     private void OnTriggerExit(Collider other) {
-        isSeeingPlayer = false;
-
-        Debug.Log("joueur parti");
-
-
-
-        i++;
-    } */
-
-    private void PlayerState() {
-/*         int i = 0;
-
-        while (playerLeft) {
-            Invoke("RotateEnemyRight", 2f);
-            playerLeft = false;
-
-            i++;
-            Debug.Log("Index est : " + i);
-        } */
-
-        
+        else if(throwDirection.x == -1)
+        {
+            Instantiate(waterDrop, positionWaterLeft, gameObject.transform.rotation).GetComponent<Rigidbody>().AddForce(new Vector3(-1,0,0) * 1000f); 
+            Invoke("DestroyWaterDrop", 1f);
+        }
 
     }
+
+    private void DestroyWaterDrop() {
+        GameObject waterDropInstantiate = GameObject.FindGameObjectWithTag("WaterThrowed");
+        Destroy(waterDropInstantiate);
+    }
+
 
 }

@@ -1584,7 +1584,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 92
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!1 &1147718998
 GameObject:
@@ -2138,7 +2138,6 @@ GameObject:
   - component: {fileID: 1615264294}
   - component: {fileID: 1615264293}
   - component: {fileID: 1615264292}
-  - component: {fileID: 1615264291}
   - component: {fileID: 1615264297}
   m_Layer: 0
   m_Name: Tour
@@ -2147,22 +2146,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1615264291
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1615264290}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd4654e30f6b30d41b3a23a70f125222, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  maxHealth: 100
-  healthBarUI: {fileID: 1700412815}
-  slider: {fileID: 380408510}
 --- !u!54 &1615264292
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2272,6 +2255,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 380408510}
+  attackRange: 6
+  waterDrop: {fileID: 7450785061579787894, guid: af0dad56c5cdab142b7584e3620edbd4, type: 3}
 --- !u!1 &1700412815
 GameObject:
   m_ObjectHideFlags: 0

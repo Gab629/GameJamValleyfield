@@ -16,6 +16,7 @@ TagManager:
   - convLeft
   - convRight
   - Box
+  - CheckPoint
   layers:
   - Default
   - TransparentFX

@@ -14,7 +14,7 @@ public class PlayerHealth : MonoBehaviour
     public Slider slider;
 
     //TEST
-    public bool isImmune = false;
+    private bool isImmune = false;
     public float immunityTime = 3f;
 
     //TODO: variable public pour l'Animator

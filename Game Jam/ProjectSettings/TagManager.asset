@@ -12,6 +12,8 @@ TagManager:
   - MoveTowardsLeft
   - MoveTowardsRight
   - WaterThrowed
+  - convLeft
+  - convRight
   layers:
   - Default
   - TransparentFX

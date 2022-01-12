@@ -21,6 +21,7 @@ public class EnnemyTower : MonoBehaviour
     public GameObject waterDrop;
 
     private bool isThrowing = false;
+    public float throwingSpeed = 2f;
 
     private Vector3 waterFixedPosition;
     private Quaternion waterFixedRotation;
@@ -123,7 +124,7 @@ public class EnnemyTower : MonoBehaviour
     private void AttackDetector() {
         isThrowing = true;
 
-        Invoke("AttackDetector", 1f);
+        Invoke("AttackDetector", throwingSpeed);
     }
 
     // ============================== **

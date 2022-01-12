@@ -8,10 +8,8 @@ public class Noix : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "Ennemy") {
-            Debug.Log("CONTACT");
             other.GetComponent<Ennemy>().TakeDamage(damageAmount);
             Destroy(gameObject);
         }
-
     }
 }

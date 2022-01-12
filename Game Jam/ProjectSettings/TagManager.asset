@@ -11,6 +11,8 @@ TagManager:
   - Ennemy
   - MoveTowardsLeft
   - MoveTowardsRight
+  - convLeft
+  - convRight
   layers:
   - Default
   - TransparentFX

@@ -20,8 +20,6 @@ public class Mouvements : MonoBehaviour
     [SerializeField] private int multipleJump = 2;
     [SerializeField] private bool jumpCancelled = false;
 
-    private int multipleJumpCounter = 0;
-
     [SerializeField] private bool JumpBool = false;
 
     [SerializeField] private int multipleJumpCounter = 0;
@@ -108,7 +106,6 @@ public class Mouvements : MonoBehaviour
     private void JumpButton(InputAction.CallbackContext context)
     {
         
-        // isJumping = context.ReadValue<float>();
         JumpBool = true;
         
         Invoke("LessJumpMultiple", 0.05f);

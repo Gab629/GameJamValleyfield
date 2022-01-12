@@ -12,20 +12,22 @@ public class Mouvements : MonoBehaviour
     private Rigidbody rbCharacter;
     
 
-    // Variables pour la detection de sol, la gravite et le statut de jump du personnage
+    // Variables pour la detection de sol/murs, la gravite et le statut de jump du personnage
     private float gravityValue = -9f;
     private bool groundedPlayer;
+    [SerializeField] private int wallTouched = 0;
     private float isJumping;   
-    private int multipleJump = 2;
+    [SerializeField] private int multipleJump = 2;
     private bool jumpCancelled = false;
 
-    private int multipleJumpCounter = 0;
+    [SerializeField] private int multipleJumpCounter = 0;
   
 
     //Variables pour toutes les forces et vitesses concernant le personnage
     private float jumpForce = 300f;
     private float doubleJumpForce = 250f;
-
+    private float doubleJumpForceWall = 100f;
+    private float wallSlideSpeed = -300f;
     private float fallingSpeed = 5f;
     private float playerSpeed = 3f;
     public Vector2 input;
@@ -37,11 +39,11 @@ public class Mouvements : MonoBehaviour
 
 
     //Variable pour le dash
-    [SerializeField] private float isDashing;
+    private float isDashing;
 
      private float dashSpeed = 5f;
 
-    [SerializeField] private bool dashBool;
+    private bool dashBool;
     //------- Cette fonction est appelle avant le start -------//
     private void Awake()
     {
@@ -84,6 +86,7 @@ public class Mouvements : MonoBehaviour
     {   
         Movements();
         Dash(); //COMP DASH
+        WallSlide(); //COMP WALLSLIDE
     }
 
 
@@ -132,18 +135,38 @@ public class Mouvements : MonoBehaviour
     private void DoubleJump(){
 
         //Si le joueur appuie sur espace, si il lui reste des sauts et qu'il a deja relacher espace une fois
-        if(isJumping == 1 && multipleJump >= 0 && jumpCancelled == true){
+        if(isJumping == 1 && multipleJump >= 0 && jumpCancelled && wallTouched != 0){
             //Le joueur peut sauter a nouveau dans les airs
             playerVelocity.y += doubleJumpForce * Time.deltaTime;
             //Le saut est pris en compte dans une variable
             multipleJumpCounter ++;
-         }
+            Debug.Log("Double jump");
+
+        }else if(wallTouched >= 0 && isJumping == 1)
+        {
+            playerVelocity.y += doubleJumpForce * Time.deltaTime;
+            wallTouched --;
+            Debug.Log("Double jump wall");
+        }
+
 
         //Si le compteur de saut est plus grand que 1
         if(multipleJumpCounter >= 1){
             //Le joueur ne peut pas sauter a nouveau
             jumpCancelled = false;
         }
+    }
+
+    private void WallSlide(){
+        
+        RaycastHit hit;
+        Physics.Raycast(transform.position, transform.forward, out hit, 0.7f);
+        
+        if(hit.transform.tag == "Wall"){
+            playerVelocity.y = wallSlideSpeed * Time.deltaTime;
+            wallTouched = 2;
+        }
+        
     }
 
 
@@ -195,6 +218,9 @@ public class Mouvements : MonoBehaviour
         //Permet au joueur detre affecte par sa velocite
         controller.Move(playerVelocity * Time.deltaTime);  
     }
+
+    
+
 
 
 

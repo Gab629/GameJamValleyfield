@@ -100,6 +100,14 @@ public class PlayerHealth : MonoBehaviour
     }
 
     // ============================== **
+    // Methode RespawnCharacter()
+    // Fait revivre le joueur apres sa mort
+    // ============================== **
+    private void RespawnCharacter(){
+
+    }
+
+    // ============================== **
     // Methode OnTriggerEnter()
     // Detecte les obstacles causant des degats
     // ============================== **

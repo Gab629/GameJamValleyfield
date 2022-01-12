@@ -30,7 +30,7 @@ public class ThrowObject : MonoBehaviour
 
     //Variables pour les directions de lancer du personnage
     private float currentValue;
-    private float previousValue;
+    [SerializeField]private float previousValue;
     private Vector2 throwDirection;
 
 
@@ -124,7 +124,7 @@ public class ThrowObject : MonoBehaviour
     private void ThrowNut(){
         
         
-        if(nutLoaded == true && isThrowing == 1 && nombreDeNoixMax == 1)
+        if(nutLoaded == true && isThrowing == 1 && nombreDeNoixMax >= 1)
         {
             nutLoaded = false;
             if(nombreDeNoixMax >= 1){
@@ -134,32 +134,21 @@ public class ThrowObject : MonoBehaviour
             nutRespawn = true;
             Vector3 positionNutLeft = new Vector3(gameObject.transform.position.x - 1, gameObject.transform.position.y, gameObject.transform.position.z);
             Vector3 positionNutRight = new Vector3(gameObject.transform.position.x + 1, gameObject.transform.position.y, gameObject.transform.position.z);
-            Vector3 positionNutLeftWhenFacingBack = new Vector3(gameObject.transform.position.x - 1, gameObject.transform.position.y, gameObject.transform.position.z);
-            Vector3 positionNutRightWhenFacingBack = new Vector3(gameObject.transform.position.x + 1, gameObject.transform.position.y, gameObject.transform.position.z);
             
-            if(previousValue == 1 && throwDirection.x == 1){
+            if(previousValue == 1){
+                Debug.Log("nut in yo face");
                 Instantiate(nut, positionNutRight, gameObject.transform.rotation).GetComponent<Rigidbody>().AddForce(new Vector3(1,0,0) * 1000f);
                 Invoke("DestroyNut", 2f);
                 imageNut.SetActive(false);
             }
-            else if(previousValue == -1 && throwDirection.x == -1)
+            else if(previousValue == -1)
             {
+                Debug.Log("nut in yo face");
                 Instantiate(nut, positionNutLeft, gameObject.transform.rotation).GetComponent<Rigidbody>().AddForce(new Vector3(-1,0,0) * 1000f); 
                 Invoke("DestroyNut", 2f);
                 imageNut.SetActive(false);
             }
-            else if(previousValue == -1 && throwDirection.x == 0)
-            {
-                Instantiate(nut, positionNutLeftWhenFacingBack, gameObject.transform.rotation).GetComponent<Rigidbody>().AddForce(new Vector3(-1,0,0) * 1000f); 
-                Invoke("DestroyNut", 2f);
-                imageNut.SetActive(false);
-            }
-            if(previousValue == 1 && throwDirection.x == 0)
-            {
-                Instantiate(nut, positionNutRightWhenFacingBack, gameObject.transform.rotation).GetComponent<Rigidbody>().AddForce(new Vector3(1,0,0) * 1000f);
-                Invoke("DestroyNut", 2f);
-                imageNut.SetActive(false);
-            }
+            
             
         }  
     }
@@ -189,8 +178,6 @@ public class ThrowObject : MonoBehaviour
            nutLoaded = true;
            nutFixedPosition = hit.transform.position; 
            nutFixedRotation = hit.transform.rotation;
-
-            
            
 
         }

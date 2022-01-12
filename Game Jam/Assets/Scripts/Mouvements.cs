@@ -59,7 +59,7 @@ public class Mouvements : MonoBehaviour
 
 
     //Variable pour les commandes inversés
-    private bool invertedCommands = false;
+    public bool invertedCommands = false;
 
 
 

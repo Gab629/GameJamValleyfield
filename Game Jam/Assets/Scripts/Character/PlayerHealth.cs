@@ -92,6 +92,14 @@ public class PlayerHealth : MonoBehaviour
     }
 
     // ============================== **
+    // Methode DisableInvertedCommands()
+    // Enleve l'immunite du joueur apres un delai
+    // ============================== **
+    private void DisableInvertedCommands() {
+        gameObject.GetComponent<Mouvements>().invertedCommands = false;
+    }
+
+    // ============================== **
     // Methode OnTriggerEnter()
     // Detecte les obstacles causant des degats
     // ============================== **
@@ -99,6 +107,12 @@ public class PlayerHealth : MonoBehaviour
 
         if (other.tag == "WaterThrowed") {
             TakeDamage(other.gameObject.GetComponent<Noix>().damageAmount);
+
+            if (!gameObject.GetComponent<Mouvements>().invertedCommands) {
+                gameObject.GetComponent<Mouvements>().invertedCommands = true;
+                Invoke("DisableInvertedCommands", immunityTime);
+            }
+
             Destroy(other.gameObject);
         }
 

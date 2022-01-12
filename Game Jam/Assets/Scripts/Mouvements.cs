@@ -20,7 +20,7 @@ public class Mouvements : MonoBehaviour
     [SerializeField] private int multipleJump = 2;
     [SerializeField] private bool jumpCancelled = false;
 
-    private int multipleJumpCounter = 0;
+    
 
     [SerializeField] private bool JumpBool = false;
 

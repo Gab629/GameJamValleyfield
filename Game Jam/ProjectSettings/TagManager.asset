@@ -8,6 +8,9 @@ TagManager:
   - Wall
   - Nut
   - NutThrowed
+  - Ennemy
+  - MoveTowardsLeft
+  - MoveTowardsRight
   layers:
   - Default
   - TransparentFX

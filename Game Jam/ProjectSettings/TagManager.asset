@@ -5,9 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
-  - Ennemy
-  - MoveTowardsRight
-  - MoveTowardsLeft
+  - Wall
+  - Nut
+  - NutThrowed
   layers:
   - Default
   - TransparentFX

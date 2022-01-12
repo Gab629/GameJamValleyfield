@@ -59,7 +59,7 @@ public class Mouvements : MonoBehaviour
 
 
     //Variable pour les commandes inversés
-    private bool invertedCommands = false;
+    public bool invertedCommands = false;
 
 
 
@@ -136,12 +136,12 @@ public class Mouvements : MonoBehaviour
         if(collision.transform.tag == "convLeft")
         {
             onConveyor = -1;
-            playerSpeed = 0.1f;
+            //playerSpeed = 0.1f;
         }
         else if(collision.transform.tag == "convRight")
         {
             onConveyor = 1;
-            playerSpeed = 0.1f;
+            //playerSpeed = 0.1f;
         }
     }
 

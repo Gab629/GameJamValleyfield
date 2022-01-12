@@ -819,6 +819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e189a05fb97d3af468e92286d6ee0efe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  convSpeed: 2
 --- !u!54 &454978942
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2136,6 +2137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e189a05fb97d3af468e92286d6ee0efe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  convSpeed: 2
 --- !u!54 &1021502615
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2641,7 +2643,7 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 120
   m_CollisionDetection: 2
 --- !u!143 &1522853141

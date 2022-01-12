@@ -13,7 +13,7 @@ public class Conveyors : MonoBehaviour
 
     private Rigidbody rbConveyor;
     private string tagConveyor;
-    private float convSpeed = 2f;
+    public float convSpeed = 2f;
 
     // Start is called before the first frame update
     void Start()

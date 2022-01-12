@@ -10,7 +10,6 @@ public class EnnemyTower : MonoBehaviour
     private Transform target;
     
     private bool isSeeingPlayer = false;
-    private bool playerLeft = false;
 
     public float attackRange = 6f;
 

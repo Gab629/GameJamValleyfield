@@ -13,6 +13,10 @@ public class PlayerHealth : MonoBehaviour
     public GameObject healthBarUI;
     public Slider slider;
 
+    //TEST
+    public bool isImmune = false;
+    public float immunityTime = 3f;
+
     //TODO: variable public pour l'Animator
 
 
@@ -70,7 +74,21 @@ public class PlayerHealth : MonoBehaviour
     // Appele par le script Noix. Diminue la vie de l'ennemi.
     // ============================== **
     private void TakeDamage(float damage) {
-        health -= damage;
+
+        if (!isImmune) {
+            health -= damage;
+            isImmune = true;
+            Invoke("DisableImmunity", immunityTime);
+        }
+
+    }
+
+    // ============================== **
+    // Methode DisableImmunity()
+    // Enleve l'immunite du joueur apres un delai
+    // ============================== **
+    private void DisableImmunity() {
+        isImmune = false;
     }
 
     // ============================== **

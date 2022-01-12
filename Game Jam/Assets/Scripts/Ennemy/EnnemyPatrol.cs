@@ -56,13 +56,13 @@ public class EnnemyPatrol : MonoBehaviour
                 transform.Translate(transform.right * speed/2 * Time.deltaTime);
                 transform.rotation = Quaternion.Euler(0,180,0);
 
-                slider.direction = Slider.Direction.LeftToRight;
+                slider.direction = Slider.Direction.RightToLeft;
 
             } else {
                 transform.Translate(-transform.right * speed/2 * Time.deltaTime);
                 transform.rotation = Quaternion.Euler(0,0,0);
 
-                slider.direction = Slider.Direction.RightToLeft;
+                slider.direction = Slider.Direction.LeftToRight;
             }
 
             //Changement d'etat vers la Chasse
@@ -79,14 +79,14 @@ public class EnnemyPatrol : MonoBehaviour
                 transform.Translate(transform.right * speed * Time.deltaTime);
                 transform.rotation = Quaternion.Euler(0,180,0);
 
-                slider.direction = Slider.Direction.LeftToRight;
+                slider.direction = Slider.Direction.RightToLeft;
 
             } else {
                 //vers la gauche
                 transform.Translate(-transform.right * speed * Time.deltaTime);
                 transform.rotation = Quaternion.Euler(0,0,0);
 
-                slider.direction = Slider.Direction.RightToLeft;
+                slider.direction = Slider.Direction.LeftToRight;
             }
 
             //Changement d'etat vers l'attaque

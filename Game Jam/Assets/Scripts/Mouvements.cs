@@ -91,7 +91,7 @@ public class Mouvements : MonoBehaviour
     //------- Update is called once per frame -------//
     void Update()
     {   
-        Gliding();
+        Gliding(); //COMP GLIDING
         Movements();
         Dash(); //COMP DASH
         WallSlide(); //COMP WALLSLIDE

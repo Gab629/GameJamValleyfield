@@ -11,6 +11,7 @@ TagManager:
   - Ennemy
   - MoveTowardsLeft
   - MoveTowardsRight
+  - WaterThrowed
   layers:
   - Default
   - TransparentFX

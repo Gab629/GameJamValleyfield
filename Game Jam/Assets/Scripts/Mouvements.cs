@@ -40,8 +40,8 @@ public class Mouvements : MonoBehaviour
     private float playerSpeed = 3f;
     public Vector2 input;
     public Vector3 move;
-    [SerializeField] private int onConveyor = 0;
-    [SerializeField] private float onConveyorSpeed = 2f;
+    private int onConveyor = 0;
+    private float onConveyorSpeed = 2f;
 
 
     //Variables pour le nouveau input system

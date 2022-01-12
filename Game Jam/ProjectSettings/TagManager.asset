@@ -15,6 +15,7 @@ TagManager:
   - EnnemyPunch
   - convLeft
   - convRight
+  - Box
   layers:
   - Default
   - TransparentFX

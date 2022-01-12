@@ -49,6 +49,14 @@ public class @InputSystem : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Hold""
+                },
+                {
+                    ""name"": ""Carry"",
+                    ""type"": ""Button"",
+                    ""id"": ""1c3811e4-d8b5-4b00-b1e9-5ebb23d840f9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Tap""
                 }
             ],
             ""bindings"": [
@@ -150,6 +158,28 @@ public class @InputSystem : IInputActionCollection, IDisposable
                     ""action"": ""Gliding"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""332b56c3-1615-451c-bb9c-8022f9d57099"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Carry"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""58298a43-9fb6-47b0-9193-2f5d67e1841e"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Carry"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -230,12 +260,11 @@ public class @InputSystem : IInputActionCollection, IDisposable
         m_PlayerMovements_Jump = m_PlayerMovements.FindAction("Jump", throwIfNotFound: true);
         m_PlayerMovements_Dash = m_PlayerMovements.FindAction("Dash", throwIfNotFound: true);
         m_PlayerMovements_Gliding = m_PlayerMovements.FindAction("Gliding", throwIfNotFound: true);
+        m_PlayerMovements_Carry = m_PlayerMovements.FindAction("Carry", throwIfNotFound: true);
         // ThrowNut
         m_ThrowNut = asset.FindActionMap("ThrowNut", throwIfNotFound: true);
         m_ThrowNut_Throw = m_ThrowNut.FindAction("Throw", throwIfNotFound: true);
         m_ThrowNut_Direction = m_ThrowNut.FindAction("Direction", throwIfNotFound: true);
-        
-        
     }
 
     public void Dispose()
@@ -289,6 +318,7 @@ public class @InputSystem : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerMovements_Jump;
     private readonly InputAction m_PlayerMovements_Dash;
     private readonly InputAction m_PlayerMovements_Gliding;
+    private readonly InputAction m_PlayerMovements_Carry;
     public struct PlayerMovementsActions
     {
         private @InputSystem m_Wrapper;
@@ -297,6 +327,7 @@ public class @InputSystem : IInputActionCollection, IDisposable
         public InputAction @Jump => m_Wrapper.m_PlayerMovements_Jump;
         public InputAction @Dash => m_Wrapper.m_PlayerMovements_Dash;
         public InputAction @Gliding => m_Wrapper.m_PlayerMovements_Gliding;
+        public InputAction @Carry => m_Wrapper.m_PlayerMovements_Carry;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMovements; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -318,6 +349,9 @@ public class @InputSystem : IInputActionCollection, IDisposable
                 @Gliding.started -= m_Wrapper.m_PlayerMovementsActionsCallbackInterface.OnGliding;
                 @Gliding.performed -= m_Wrapper.m_PlayerMovementsActionsCallbackInterface.OnGliding;
                 @Gliding.canceled -= m_Wrapper.m_PlayerMovementsActionsCallbackInterface.OnGliding;
+                @Carry.started -= m_Wrapper.m_PlayerMovementsActionsCallbackInterface.OnCarry;
+                @Carry.performed -= m_Wrapper.m_PlayerMovementsActionsCallbackInterface.OnCarry;
+                @Carry.canceled -= m_Wrapper.m_PlayerMovementsActionsCallbackInterface.OnCarry;
             }
             m_Wrapper.m_PlayerMovementsActionsCallbackInterface = instance;
             if (instance != null)
@@ -334,6 +368,9 @@ public class @InputSystem : IInputActionCollection, IDisposable
                 @Gliding.started += instance.OnGliding;
                 @Gliding.performed += instance.OnGliding;
                 @Gliding.canceled += instance.OnGliding;
+                @Carry.started += instance.OnCarry;
+                @Carry.performed += instance.OnCarry;
+                @Carry.canceled += instance.OnCarry;
             }
         }
     }
@@ -385,6 +422,7 @@ public class @InputSystem : IInputActionCollection, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
         void OnGliding(InputAction.CallbackContext context);
+        void OnCarry(InputAction.CallbackContext context);
     }
     public interface IThrowNutActions
     {

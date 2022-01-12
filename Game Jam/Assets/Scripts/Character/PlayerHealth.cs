@@ -18,11 +18,12 @@ public class PlayerHealth : MonoBehaviour
     private Quaternion rotationCheckpoint;
     public GameObject character;
 
-
-    //TEST
     private bool isImmune = false;
     public float immunityTime = 3f;
     private bool isDead = false;
+
+    //TEST
+    public int hitNb;
 
     //TODO: variable public pour l'Animator
 
@@ -86,6 +87,7 @@ public class PlayerHealth : MonoBehaviour
 
         if (!isImmune) {
             health -= damage;
+            hitNb++;
             isImmune = true;
             Invoke("DisableImmunity", immunityTime);
         }
@@ -136,15 +138,18 @@ public class PlayerHealth : MonoBehaviour
             }
 
             Destroy(other.gameObject);
+
         }
 
         if (other.tag == "EnnemyPunch") {
             TakeDamage(other.gameObject.GetComponent<Noix>().damageAmount);
+
         }
 
         if(other.tag == "CheckPoint"){
            positionCheckpoint = other.transform.position;
            rotationCheckpoint = other.transform.rotation;
+           
         }
 
     }

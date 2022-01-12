@@ -18,9 +18,7 @@ public class BoxManager : MonoBehaviour
 
     private Vector3 positionLeft;
     private Vector3 positionRight;
-/*     private Vector3 positionRight;
-    private Vector3 positionLeftWhenFacingBack;
-    private Vector3 positionRightWhenFacingBack; */
+
 
     void Awake() {
         inputActions = new InputSystem();
@@ -44,17 +42,19 @@ public class BoxManager : MonoBehaviour
 
         positionLeft = new Vector3(gameObject.transform.position.x - 1, gameObject.transform.position.y, gameObject.transform.position.z);
         positionRight = new Vector3(gameObject.transform.position.x + 1, gameObject.transform.position.y, gameObject.transform.position.z);
-        /* positionRight = new Vector3(gameObject.transform.position.x + 1, gameObject.transform.position.y, gameObject.transform.position.z);
-        positionLeftWhenFacingBack = new Vector3(gameObject.transform.position.x - 1, gameObject.transform.position.y, gameObject.transform.position.z);
-        positionRightWhenFacingBack = new Vector3(gameObject.transform.position.x + 1, gameObject.transform.position.y, gameObject.transform.position.z); */
+
+        if (gameObject.GetComponent<PlayerHealth>().hitNb >= 2 && hasBox) {
+            PuttingDown();
+            gameObject.GetComponent<PlayerHealth>().hitNb = 0;
+        }
     }
 
     private void CarryButton(InputAction.CallbackContext context){
         if (hasBox) {
-            Invoke("PuttingDown", 0f);
+            PuttingDown();
 
         } else if (!hasBox && canTakeBox){
-            Invoke("TakeBox", 0f);
+            TakeBox();
 
         }
     }

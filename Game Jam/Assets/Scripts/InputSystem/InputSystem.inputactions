@@ -36,6 +36,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Hold"
+                },
+                {
+                    "name": "Carry",
+                    "type": "Button",
+                    "id": "1c3811e4-d8b5-4b00-b1e9-5ebb23d840f9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Tap"
                 }
             ],
             "bindings": [
@@ -140,12 +148,23 @@
                 },
                 {
                     "name": "",
-                    "id": "cb2810fb-2346-4985-b196-b35daf6cd7bd",
-                    "path": "<Gamepad>/rightTrigger",
+                    "id": "332b56c3-1615-451c-bb9c-8022f9d57099",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Gliding",
+                    "action": "Carry",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "58298a43-9fb6-47b0-9193-2f5d67e1841e",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Carry",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -157,7 +176,7 @@
             "actions": [
                 {
                     "name": "Throw",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "7c7984cd-5506-4a5b-a2c9-ad440dc6d2c9",
                     "expectedControlType": "Button",
                     "processors": "",

@@ -11,8 +11,6 @@ TagManager:
   - Ennemy
   - MoveTowardsLeft
   - MoveTowardsRight
-  - convLeft
-  - convRight
   - WaterThrowed
   layers:
   - Default

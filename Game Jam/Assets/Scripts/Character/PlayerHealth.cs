@@ -13,9 +13,16 @@ public class PlayerHealth : MonoBehaviour
     public GameObject healthBarUI;
     public Slider slider;
 
+    // Variable pour respawn
+    private Vector3 positionCheckpoint;
+    private Quaternion rotationCheckpoint;
+    public GameObject character;
+
+
     //TEST
     private bool isImmune = false;
     public float immunityTime = 3f;
+    private bool isDead = false;
 
     //TODO: variable public pour l'Animator
 
@@ -35,6 +42,7 @@ public class PlayerHealth : MonoBehaviour
     void Update()
     {
         CheckHealth();
+        RespawnCharacter();
     }
 
 
@@ -52,7 +60,8 @@ public class PlayerHealth : MonoBehaviour
 
         // Detruit le gameObject s'il n'a plus de vie
         if (health <= 0) {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
+            isDead = true;
         }
 
         // La vie ne peut depasser le maximum de vie
@@ -104,7 +113,12 @@ public class PlayerHealth : MonoBehaviour
     // Fait revivre le joueur apres sa mort
     // ============================== **
     private void RespawnCharacter(){
-
+        if(isDead == true){
+            character.SetActive(true);
+            character.transform.position = positionCheckpoint;
+            isDead = false;
+            health = 250f;
+        }
     }
 
     // ============================== **
@@ -126,6 +140,11 @@ public class PlayerHealth : MonoBehaviour
 
         if (other.tag == "EnnemyPunch") {
             TakeDamage(other.gameObject.GetComponent<Noix>().damageAmount);
+        }
+
+        if(other.tag == "CheckPoint"){
+           positionCheckpoint = other.transform.position;
+           rotationCheckpoint = other.transform.rotation;
         }
 
     }

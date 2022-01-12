@@ -17,6 +17,7 @@ TagManager:
   - convRight
   - Box
   - CheckPoint
+  - Spikes
   layers:
   - Default
   - TransparentFX

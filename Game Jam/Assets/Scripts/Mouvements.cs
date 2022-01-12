@@ -112,7 +112,7 @@ public class Mouvements : MonoBehaviour
         JumpBool = true;
         
         Invoke("LessJumpMultiple", 0.05f);
-        Invoke("JumpButtonCanceled", 0.5f);
+        Invoke("JumpButtonCanceled", 0.05f);
         
     }
     //------- Cette fonction reduit le nombre de multipleJump -------//
@@ -202,7 +202,7 @@ public class Mouvements : MonoBehaviour
     //------- Cette fonction permet au personnage de dasher -------//
     private void Dash(){
         if(dashBool == true){
-             move = new Vector3(input.x, 0, input.y) * dashSpeed;
+             move = new Vector3(input.x, 0, 0) * dashSpeed;
             controller.Move(move * Time.deltaTime * playerSpeed);
         }
     }
@@ -230,7 +230,7 @@ public class Mouvements : MonoBehaviour
         //Bouge le joueur dans une direction choisie plus bas
         gameObject.transform.forward = move;
         //Met les inputs choisis dans la variable move (boutons enfonces)
-        move = new Vector3(input.x, 0, input.y);
+        move = new Vector3(input.x, 0, 0);
         //Bouge le joueur dans la direction definie par le move
         controller.Move(move * Time.deltaTime * playerSpeed);
 

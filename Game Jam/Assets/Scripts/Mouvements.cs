@@ -351,8 +351,12 @@ public class Mouvements : MonoBehaviour
         } 
         
         if(!invertedCommands){
-            //Bouge le joueur dans une direction choisie plus bas
-            gameObject.transform.forward = move;
+            //Rotationne le personnage dans la direction voulu
+            if(input.x >= 1){
+                transform.eulerAngles = new Vector3(0.0f, 90f, 0.0f);
+            }else if(input.x <= -1){
+                transform.eulerAngles = new Vector3(0.0f, 270f, 0.0f);
+            }
             //Met les inputs choisis dans la variable move (boutons enfonces)
             move = new Vector3(input.x, 0, 0);
             //Bouge le joueur dans la direction definie par le move
@@ -363,8 +367,12 @@ public class Mouvements : MonoBehaviour
             //Permet au joueur detre affecte par sa velocite
             controller.Move(playerVelocity * Time.deltaTime);    
         }else{
-            //Bouge le joueur dans une direction choisie plus bas
-            gameObject.transform.forward = move;
+            //Rotationne le personnage dans la direction voulu
+            if(input.x >= 1){
+                transform.eulerAngles = new Vector3(0.0f, 90f, 0.0f);
+            }else if(input.x <= -1){
+                transform.eulerAngles = new Vector3(0.0f, 270f, 0.0f);
+            }
             //Met les inputs choisis dans la variable move (boutons enfonces)
             move = new Vector3(-input.x, 0, 0);
             //Bouge le joueur dans la direction definie par le move

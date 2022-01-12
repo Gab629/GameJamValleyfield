@@ -139,6 +139,74 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "ThrowNut",
+            "id": "e8668a76-f611-4741-80d7-1b62b07fbe0c",
+            "actions": [
+                {
+                    "name": "Throw",
+                    "type": "Value",
+                    "id": "7c7984cd-5506-4a5b-a2c9-ad440dc6d2c9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Direction",
+                    "type": "Button",
+                    "id": "461c7dd4-cb00-4236-aad1-6e2b1b382591",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "efdcfb7e-00f0-47bc-a545-cc7355405437",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Throw",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "2D Vector",
+                    "id": "a9320b1a-22ba-4894-bf44-331f2ef9513a",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Direction",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "left",
+                    "id": "10e26008-86d6-417b-837c-cdeb791c3f48",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Direction",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "a9b5fb2b-a6b9-4673-b847-07e57c2086a8",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Direction",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                }
+            ]
         }
     ],
     "controlSchemes": []

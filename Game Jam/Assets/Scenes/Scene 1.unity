@@ -2221,6 +2221,7 @@ GameObject:
   - component: {fileID: 1522853139}
   - component: {fileID: 1522853138}
   - component: {fileID: 1522853137}
+  - component: {fileID: 1522853144}
   - component: {fileID: 1522853136}
   - component: {fileID: 1522853141}
   - component: {fileID: 1522853140}
@@ -2361,8 +2362,6 @@ MonoBehaviour:
   playerInput: {fileID: 0}
   input: {x: 0, y: 0}
   move: {x: 0, y: 0, z: 0}
-  onConveyor: 0
-  onConveyorSpeed: 2
 --- !u!114 &1522853143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2379,6 +2378,19 @@ MonoBehaviour:
   nut: {fileID: 8852318869215647793, guid: 3747f47e367c23f419957d53fbd4d2da, type: 3}
   nutFixed: {fileID: 8707002117119340646, guid: f31b764dec8a9df4683684736a438b47, type: 3}
   nutRespawn: 0
+--- !u!65 &1522853144
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522853135}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1615264290
 GameObject:
   m_ObjectHideFlags: 0

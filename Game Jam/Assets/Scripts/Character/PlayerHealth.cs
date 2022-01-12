@@ -149,7 +149,10 @@ public class PlayerHealth : MonoBehaviour
         if(other.tag == "CheckPoint"){
            positionCheckpoint = other.transform.position;
            rotationCheckpoint = other.transform.rotation;
-           
+        }
+
+        if(other.tag == "Spikes"){
+            TakeDamage(other.gameObject.GetComponent<Noix>().damageAmount);
         }
 
     }

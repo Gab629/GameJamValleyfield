@@ -26,7 +26,7 @@ public class Mouvements : MonoBehaviour
     //Variables pour toutes les forces et vitesses concernant le personnage
     private float jumpForce = 300f;
     private float doubleJumpForce = 250f;
-    private float doubleJumpForceWall = 350f;
+    private float doubleJumpForceWall = 275f;
     private float wallSlideSpeed = -300f;
     private float fallingSpeed = 5f;
     private float playerSpeed = 3f;
@@ -95,7 +95,6 @@ public class Mouvements : MonoBehaviour
     void FixedUpdate()
     {
         Jump();
-        
         DoubleJump(); //COMP DOUBLE JUMP
 
     }

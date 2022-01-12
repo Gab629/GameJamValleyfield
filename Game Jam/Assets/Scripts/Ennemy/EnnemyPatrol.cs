@@ -21,9 +21,12 @@ public class EnnemyPatrol : MonoBehaviour
     public float attackRange = 1.5f;
     public float speed = 3f;
     private bool isMovingRight = false;
+    private bool isAttacking = false;
+
 
     // Canvas object
     public Slider slider;
+    public GameObject attackCollider;
 
 
     // ============================== **
@@ -101,7 +104,10 @@ public class EnnemyPatrol : MonoBehaviour
 
         } else if (currentState == "Attack") {
             //TODO: Animation d'attaque
-            Debug.Log("Ennemi attaque");
+
+            if (!isAttacking) {
+                Invoke("AttackEnable", 0.5f);
+            }
 
 
             //Changement d'etat vers la Chasse
@@ -109,6 +115,26 @@ public class EnnemyPatrol : MonoBehaviour
                 currentState = "Chase";
             }
         }
+    }
+
+    // ============================== **
+    // Methode AttackEnable()
+    // Active le collider pour frapper le joueur
+    // ============================== **
+    private void AttackEnable() {
+        isAttacking = true;
+        attackCollider.SetActive(true);
+        Invoke("AttackDisable", 1f);
+
+    }
+
+    // ============================== **
+    // Methode AttackDisable()
+    // Desactive le collider pour frapper le joueur
+    // ============================== **
+    private void AttackDisable() {
+        attackCollider.SetActive(false);
+        isAttacking = false;      
     }
 
     // Detecte les checkpoint qui gere sa direction

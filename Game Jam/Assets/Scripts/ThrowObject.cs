@@ -129,25 +129,25 @@ public class ThrowObject : MonoBehaviour
             Vector3 positionNutRightWhenFacingBack = new Vector3(gameObject.transform.position.x + 1, gameObject.transform.position.y, gameObject.transform.position.z);
             
             if(previousValue == 1 && throwDirection.x == 1){
-                Instantiate(nut, positionNutRight, gameObject.transform.rotation).GetComponent<Rigidbody>().AddForce(transform.forward * 1000f);
+                Instantiate(nut, positionNutRight, gameObject.transform.rotation).GetComponent<Rigidbody>().AddForce(new Vector3(1,0,0) * 1000f);
                 Invoke("DestroyNut", 2f);
                 imageNut.SetActive(false);
             }
             else if(previousValue == -1 && throwDirection.x == -1)
             {
-                Instantiate(nut, positionNutLeft, gameObject.transform.rotation).GetComponent<Rigidbody>().AddForce(transform.forward * 1000f); 
+                Instantiate(nut, positionNutLeft, gameObject.transform.rotation).GetComponent<Rigidbody>().AddForce(new Vector3(-1,0,0) * 1000f); 
                 Invoke("DestroyNut", 2f);
                 imageNut.SetActive(false);
             }
             else if(previousValue == -1 && throwDirection.x == 0)
             {
-                Instantiate(nut, positionNutLeftWhenFacingBack, gameObject.transform.rotation).GetComponent<Rigidbody>().AddForce((transform.right * -1) * 1000f); 
+                Instantiate(nut, positionNutLeftWhenFacingBack, gameObject.transform.rotation).GetComponent<Rigidbody>().AddForce(new Vector3(-1,0,0) * 1000f); 
                 Invoke("DestroyNut", 2f);
                 imageNut.SetActive(false);
             }
             if(previousValue == 1 && throwDirection.x == 0)
             {
-                Instantiate(nut, positionNutRightWhenFacingBack, gameObject.transform.rotation).GetComponent<Rigidbody>().AddForce(transform.right * 1000f);
+                Instantiate(nut, positionNutRightWhenFacingBack, gameObject.transform.rotation).GetComponent<Rigidbody>().AddForce(new Vector3(1,0,0) * 1000f);
                 Invoke("DestroyNut", 2f);
                 imageNut.SetActive(false);
             }

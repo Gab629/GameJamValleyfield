@@ -12,6 +12,7 @@ TagManager:
   - MoveTowardsLeft
   - MoveTowardsRight
   - WaterThrowed
+  - EnnemyPunch
   - convLeft
   - convRight
   layers:

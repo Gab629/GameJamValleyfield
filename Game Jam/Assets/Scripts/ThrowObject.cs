@@ -26,9 +26,11 @@ public class ThrowObject : MonoBehaviour
 
     [SerializeField] private bool nutRespawn = false;
 
+    [SerializeField] private float nombreDeNoixMax = 0f;
+
     //Variables pour les directions de lancer du personnage
     private float currentValue;
-    private float previousValue;
+    [SerializeField]private float previousValue;
     private Vector2 throwDirection;
 
 
@@ -105,12 +107,14 @@ public class ThrowObject : MonoBehaviour
 
 
     //------- Cette fonction detecte si il y a une collision avec un objet trigger -------//
-    void OnTriggerEnter(Collider collision)
+    void OnTriggerExit(Collider collision)
     {
         if(collision.transform.tag == "Nut"){
             Destroy(collision.gameObject);
             imageNut.SetActive(true);
             nutLoaded = true;
+            nombreDeNoixMax ++;
+            
         }
     }
 
@@ -118,39 +122,33 @@ public class ThrowObject : MonoBehaviour
 
     //------- Cette fonction sert a lancer une noix dans la direction visee par le joueur -------//
     private void ThrowNut(){
-
-        if(nutLoaded == true && isThrowing == 1)
+        
+        
+        if(nutLoaded == true && isThrowing == 1 && nombreDeNoixMax >= 1)
         {
             nutLoaded = false;
-
+            if(nombreDeNoixMax >= 1){
+                nombreDeNoixMax = 0f;
+            }
+            
+            nutRespawn = true;
             Vector3 positionNutLeft = new Vector3(gameObject.transform.position.x - 1, gameObject.transform.position.y, gameObject.transform.position.z);
             Vector3 positionNutRight = new Vector3(gameObject.transform.position.x + 1, gameObject.transform.position.y, gameObject.transform.position.z);
-            Vector3 positionNutLeftWhenFacingBack = new Vector3(gameObject.transform.position.x - 1, gameObject.transform.position.y, gameObject.transform.position.z);
-            Vector3 positionNutRightWhenFacingBack = new Vector3(gameObject.transform.position.x + 1, gameObject.transform.position.y, gameObject.transform.position.z);
             
-            if(previousValue == 1 && throwDirection.x == 1){
+            if(previousValue == 1){
+                Debug.Log("nut in yo face");
                 Instantiate(nut, positionNutRight, gameObject.transform.rotation).GetComponent<Rigidbody>().AddForce(new Vector3(1,0,0) * 1000f);
                 Invoke("DestroyNut", 2f);
                 imageNut.SetActive(false);
             }
-            else if(previousValue == -1 && throwDirection.x == -1)
+            else if(previousValue == -1)
             {
+                Debug.Log("nut in yo face");
                 Instantiate(nut, positionNutLeft, gameObject.transform.rotation).GetComponent<Rigidbody>().AddForce(new Vector3(-1,0,0) * 1000f); 
                 Invoke("DestroyNut", 2f);
                 imageNut.SetActive(false);
             }
-            else if(previousValue == -1 && throwDirection.x == 0)
-            {
-                Instantiate(nut, positionNutLeftWhenFacingBack, gameObject.transform.rotation).GetComponent<Rigidbody>().AddForce(new Vector3(-1,0,0) * 1000f); 
-                Invoke("DestroyNut", 2f);
-                imageNut.SetActive(false);
-            }
-            if(previousValue == 1 && throwDirection.x == 0)
-            {
-                Instantiate(nut, positionNutRightWhenFacingBack, gameObject.transform.rotation).GetComponent<Rigidbody>().AddForce(new Vector3(1,0,0) * 1000f);
-                Invoke("DestroyNut", 2f);
-                imageNut.SetActive(false);
-            }
+            
             
         }  
     }
@@ -170,7 +168,7 @@ public class ThrowObject : MonoBehaviour
         RaycastHit hit;
         Physics.Raycast(transform.position, transform.forward, out hit, 0.7f);
 
-        if(nutRespawn == true && isThrowing == 1){
+        if(nutRespawn == true && isThrowing == 1 && nombreDeNoixMax == 0){
                 Invoke("RespawnNut", 3.5f);
                 nutRespawn = false;
                 
@@ -180,9 +178,7 @@ public class ThrowObject : MonoBehaviour
            nutLoaded = true;
            nutFixedPosition = hit.transform.position; 
            nutFixedRotation = hit.transform.rotation;
-
-            
-           nutRespawn = true;
+           
 
         }
         
@@ -192,7 +188,6 @@ public class ThrowObject : MonoBehaviour
 
     //------- Cette fonction sert a faire reaparaitre la noix prise par le joueur -------//
     private void RespawnNut(){
-        
         Instantiate(nutFixed, nutFixedPosition, nutFixedRotation);
     }
     

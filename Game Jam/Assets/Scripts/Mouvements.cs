@@ -150,14 +150,14 @@ public class Mouvements : MonoBehaviour
 
         //Si le joueur appuie sur espace, si il lui reste des sauts et qu'il a deja relacher espace une fois
         
-        if(JumpBool == true && multipleJump >= 0 && jumpCancelled && wallTouched != 0){
+        if(JumpBool == true && multipleJump >= 0 && jumpCancelled && wallTouched <= 0){
             //Le joueur peut sauter a nouveau dans les airs
             playerVelocity.y += doubleJumpForce * Time.deltaTime;
             //Le saut est pris en compte dans une variable
             multipleJumpCounter ++;
             Debug.Log("Double jump");
 
-        }else if(wallTouched >= 0 && JumpBool == true)
+        }else if(wallTouched > 0 && JumpBool == true)
         {
             playerVelocity.y += doubleJumpForce * Time.deltaTime;
             wallTouched --;

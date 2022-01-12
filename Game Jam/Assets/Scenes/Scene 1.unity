@@ -541,12 +541,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInput: {fileID: 0}
+  wallTouched: 0
   multipleJump: 2
+  jumpCancelled: 0
   JumpBool: 0
+  multipleJumpCounter: 0
   input: {x: 0, y: 0}
   move: {x: 0, y: 0, z: 0}
-  isDashing: 0
-  dashBool: 0
 --- !u!1 &2060977054
 GameObject:
   m_ObjectHideFlags: 0
@@ -561,7 +562,7 @@ GameObject:
   - component: {fileID: 2060977055}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

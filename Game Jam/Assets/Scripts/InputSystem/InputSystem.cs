@@ -41,6 +41,14 @@ public class @InputSystem : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Tap""
+                },
+                {
+                    ""name"": ""Gliding"",
+                    ""type"": ""Button"",
+                    ""id"": ""cb652c86-058a-4a6b-ab04-95a0a82e3cc9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold""
                 }
             ],
             ""bindings"": [
@@ -131,6 +139,17 @@ public class @InputSystem : IInputActionCollection, IDisposable
                     ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""860c2c38-bc63-406d-ae18-4afacede7282"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Gliding"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -142,6 +161,7 @@ public class @InputSystem : IInputActionCollection, IDisposable
         m_PlayerMovements_Movements = m_PlayerMovements.FindAction("Movements", throwIfNotFound: true);
         m_PlayerMovements_Jump = m_PlayerMovements.FindAction("Jump", throwIfNotFound: true);
         m_PlayerMovements_Dash = m_PlayerMovements.FindAction("Dash", throwIfNotFound: true);
+        m_PlayerMovements_Gliding = m_PlayerMovements.FindAction("Gliding", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -194,6 +214,7 @@ public class @InputSystem : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerMovements_Movements;
     private readonly InputAction m_PlayerMovements_Jump;
     private readonly InputAction m_PlayerMovements_Dash;
+    private readonly InputAction m_PlayerMovements_Gliding;
     public struct PlayerMovementsActions
     {
         private @InputSystem m_Wrapper;
@@ -201,6 +222,7 @@ public class @InputSystem : IInputActionCollection, IDisposable
         public InputAction @Movements => m_Wrapper.m_PlayerMovements_Movements;
         public InputAction @Jump => m_Wrapper.m_PlayerMovements_Jump;
         public InputAction @Dash => m_Wrapper.m_PlayerMovements_Dash;
+        public InputAction @Gliding => m_Wrapper.m_PlayerMovements_Gliding;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMovements; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -219,6 +241,9 @@ public class @InputSystem : IInputActionCollection, IDisposable
                 @Dash.started -= m_Wrapper.m_PlayerMovementsActionsCallbackInterface.OnDash;
                 @Dash.performed -= m_Wrapper.m_PlayerMovementsActionsCallbackInterface.OnDash;
                 @Dash.canceled -= m_Wrapper.m_PlayerMovementsActionsCallbackInterface.OnDash;
+                @Gliding.started -= m_Wrapper.m_PlayerMovementsActionsCallbackInterface.OnGliding;
+                @Gliding.performed -= m_Wrapper.m_PlayerMovementsActionsCallbackInterface.OnGliding;
+                @Gliding.canceled -= m_Wrapper.m_PlayerMovementsActionsCallbackInterface.OnGliding;
             }
             m_Wrapper.m_PlayerMovementsActionsCallbackInterface = instance;
             if (instance != null)
@@ -232,6 +257,9 @@ public class @InputSystem : IInputActionCollection, IDisposable
                 @Dash.started += instance.OnDash;
                 @Dash.performed += instance.OnDash;
                 @Dash.canceled += instance.OnDash;
+                @Gliding.started += instance.OnGliding;
+                @Gliding.performed += instance.OnGliding;
+                @Gliding.canceled += instance.OnGliding;
             }
         }
     }
@@ -241,5 +269,6 @@ public class @InputSystem : IInputActionCollection, IDisposable
         void OnMovements(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
+        void OnGliding(InputAction.CallbackContext context);
     }
 }

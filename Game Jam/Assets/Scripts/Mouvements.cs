@@ -44,9 +44,10 @@ public class Mouvements : MonoBehaviour
      private float dashSpeed = 5f;
     private bool dashBool;
 
+    //Variable pour le gliding
+    private float glidingSpeed = -100f;
 
-
-
+    [SerializeField] private float isGliding;
     //------- Cette fonction est appelle avant le start -------//
     private void Awake()
     {
@@ -63,10 +64,16 @@ public class Mouvements : MonoBehaviour
         //Remet les valeur a 0 lorsqu'on relache la touche
         inputActions.PlayerMovements.Jump.canceled += JumpButton;
         
-        //Permet d'aller chercher les inputs des touches pour le saut
+        //Permet d'aller chercher les inputs des touches pour le dash
         inputActions.PlayerMovements.Dash.performed += DashCharacter;
         //Remet les valeur a 0 lorsqu'on relache la touche
         inputActions.PlayerMovements.Dash.canceled += DashCharacter;
+
+        //Permet d'aller chercher les inputs des touches pour le glididng
+        inputActions.PlayerMovements.Gliding.performed += GlidingCharacter;
+        //Remet les valeur a 0 lorsqu'on relache la touche
+        inputActions.PlayerMovements.Gliding.canceled += GlidingCharacter;
+
     }
 
 
@@ -84,9 +91,11 @@ public class Mouvements : MonoBehaviour
     //------- Update is called once per frame -------//
     void Update()
     {   
+        Gliding();
         Movements();
         Dash(); //COMP DASH
         WallSlide(); //COMP WALLSLIDE
+        
     }
 
 
@@ -200,8 +209,24 @@ public class Mouvements : MonoBehaviour
         
     }
 
+    //------- Cette fonction detecte si le bouton droit de la souris est enfonce -------//
+    private void GlidingCharacter(InputAction.CallbackContext context){
+            isGliding = context.ReadValue<float>();
+    }
+    //------- Cette fonction permet de planer après avoir fait deux saut  -------//
+    private void Gliding(){
+        if(isGliding == 1 && controller.isGrounded != true && multipleJump <= 0){                
+            playerVelocity.y = glidingSpeed * Time.deltaTime;
+        }
+        
+    }
 
-    //------- Cette fonction detecte si le bouton E est enfonce -------//
+
+    
+
+
+
+    //------- Cette fonction detecte si le bouton shift est enfonce -------//
     private void DashCharacter(InputAction.CallbackContext context){
         dashBool = true;
         Invoke("DashCharacterCanceled", 0.2f);

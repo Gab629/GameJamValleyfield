@@ -53,15 +53,13 @@ public class Mouvements : MonoBehaviour
 
         //Permet d'aller chercher les inputs des touches pour le mouvement
         inputActions.PlayerMovements.Movements.performed += MovementsCharacter;
-        
+         //Remet les valeur a 0 lorsqu'on relache la touche
         inputActions.PlayerMovements.Movements.canceled += MovementsCharacter;
+        
         //Permet d'aller chercher les inputs des touches pour le saut
         inputActions.PlayerMovements.Jump.performed += JumpButton;
         //Remet les valeur a 0 lorsqu'on relache la touche
         inputActions.PlayerMovements.Jump.canceled += JumpButton;
-
-        //Appelle la fonction JumpButtonCancelled lorsqu'on relache espace
-        // inputActions.PlayerMovements.Jump.canceled += JumpButtonCanceled; 
         
         //Permet d'aller chercher les inputs des touches pour le saut
         inputActions.PlayerMovements.Dash.performed += DashCharacter;
@@ -113,11 +111,12 @@ public class Mouvements : MonoBehaviour
         Invoke("JumpButtonCanceled", 0.5f);
         
     }
+    //------- Cette fonction reduit le nombre de multipleJump -------//
     private void LessJumpMultiple(){
         
         multipleJump --;
     }
-    //------- Cette fonction detecte si le bouton Espace est relache -------//
+    //------- Cette fonction est call sert à remettre les bools pour doubleJump -------//
     private void JumpButtonCanceled()
     {
         

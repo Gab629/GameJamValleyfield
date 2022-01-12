@@ -12,24 +12,27 @@ public class Mouvements : MonoBehaviour
     private Rigidbody rbCharacter;
     
 
-    // Variables pour la detection de sol, la gravite et le statut de jump du personnage
+    // Variables pour la detection de sol/murs, la gravite et le statut de jump du personnage
     private float gravityValue = -9f;
     private bool groundedPlayer;
+    private int wallTouched = 0;
     private float isJumping;   
     private int multipleJump = 2;
     private bool jumpCancelled = false;
-
+    private bool JumpBool = false;
     private int multipleJumpCounter = 0;
   
 
     //Variables pour toutes les forces et vitesses concernant le personnage
     private float jumpForce = 300f;
     private float doubleJumpForce = 250f;
-
+    private float doubleJumpForceWall = 350f;
+    private float wallSlideSpeed = -300f;
     private float fallingSpeed = 5f;
     private float playerSpeed = 3f;
     public Vector2 input;
     public Vector3 move;
+    
 
 
     //Variables pour le nouveau input system
@@ -37,11 +40,13 @@ public class Mouvements : MonoBehaviour
 
 
     //Variable pour le dash
-    [SerializeField] private float isDashing;
-
+    private float isDashing;
      private float dashSpeed = 5f;
+    private bool dashBool;
 
-    [SerializeField] private bool dashBool;
+
+
+
     //------- Cette fonction est appelle avant le start -------//
     private void Awake()
     {
@@ -50,16 +55,13 @@ public class Mouvements : MonoBehaviour
 
         //Permet d'aller chercher les inputs des touches pour le mouvement
         inputActions.PlayerMovements.Movements.performed += MovementsCharacter;
-        //Remet les valeur a 0 lorsqu'on relache la touche
-        inputActions.PlayerMovements.Movements.canceled += MovementsCharacter; 
-
+         //Remet les valeur a 0 lorsqu'on relache la touche
+        inputActions.PlayerMovements.Movements.canceled += MovementsCharacter;
+        
         //Permet d'aller chercher les inputs des touches pour le saut
         inputActions.PlayerMovements.Jump.performed += JumpButton;
         //Remet les valeur a 0 lorsqu'on relache la touche
         inputActions.PlayerMovements.Jump.canceled += JumpButton;
-
-        //Appelle la fonction JumpButtonCancelled lorsqu'on relache espace
-        inputActions.PlayerMovements.Jump.canceled += JumpButtonCanceled; 
         
         //Permet d'aller chercher les inputs des touches pour le saut
         inputActions.PlayerMovements.Dash.performed += DashCharacter;
@@ -84,6 +86,7 @@ public class Mouvements : MonoBehaviour
     {   
         Movements();
         Dash(); //COMP DASH
+        WallSlide(); //COMP WALLSLIDE
     }
 
 
@@ -92,37 +95,54 @@ public class Mouvements : MonoBehaviour
     void FixedUpdate()
     {
         Jump();
+        
         DoubleJump(); //COMP DOUBLE JUMP
+
     }
 
 
-
+    
     //------- Cette fonction detecte si le bouton Espace est enfonce -------//
     private void JumpButton(InputAction.CallbackContext context)
     {
-        isJumping = context.ReadValue<float>();
+        
+        JumpBool = true;
+        
+        Invoke("LessJumpMultiple", 0.05f);
+        Invoke("JumpButtonCanceled", 0.05f);
         
     }
-
-    //------- Cette fonction detecte si le bouton Espace est relache -------//
-    private void JumpButtonCanceled(InputAction.CallbackContext context)
-    {
+    //------- Cette fonction reduit le nombre de multipleJump -------//
+    private void LessJumpMultiple(){
+        
         multipleJump --;
+    }
+    //------- Cette fonction est call sert à remettre les bools pour doubleJump -------//
+    private void JumpButtonCanceled()
+    {
+        
         jumpCancelled = true;
+        JumpBool = false;
     }
 
     //------- Cette fonction fait sauter le personnage -------//
     private void Jump()
     {
-        if (isJumping == 1 && controller.isGrounded){
-           playerVelocity.y += jumpForce * Time.deltaTime;
+        //Si le joueur appuie sur espace et qu'il est au sol
+        if (JumpBool == true && controller.isGrounded){
+            //Il peut sauter
+           playerVelocity.y += jumpForce * Time.deltaTime;  
         }
-        else if (isJumping == 0 && controller.isGrounded)
+        //Si le joueur n'appuie pas sur espace et qu'il est au sol
+        else if (JumpBool == false && controller.isGrounded)
         {
+            //Sa vitesse en Y est remise a zero
             playerVelocity.y = 0f;
         }
-        else if(isJumping == 0 && controller.isGrounded != true)
+        //Si le joueur n'appuie pas sur espace et qu'il n'est pas au sol
+        else if(JumpBool == false && controller.isGrounded != true)
         {
+            //Il tombe plus vite (sentiment de jump plus fluide)
              playerVelocity.y -= fallingSpeed * Time.deltaTime;
         }
  
@@ -132,18 +152,52 @@ public class Mouvements : MonoBehaviour
     private void DoubleJump(){
 
         //Si le joueur appuie sur espace, si il lui reste des sauts et qu'il a deja relacher espace une fois
-        if(isJumping == 1 && multipleJump >= 0 && jumpCancelled == true){
+        
+        if(JumpBool == true && multipleJump >= 0 && jumpCancelled && wallTouched <= 0){
             //Le joueur peut sauter a nouveau dans les airs
             playerVelocity.y += doubleJumpForce * Time.deltaTime;
             //Le saut est pris en compte dans une variable
             multipleJumpCounter ++;
-         }
+
+        //Si le joueur appuie sur espace et si il a touche le mur
+        }else if(wallTouched > 0 && JumpBool == true)
+        {
+            //Le joueur peut sauter a nouveau dans les airs
+            playerVelocity.y += doubleJumpForceWall * Time.deltaTime;
+            //On detecte qu'il a saute du mur
+            wallTouched --;
+        }
+
 
         //Si le compteur de saut est plus grand que 1
         if(multipleJumpCounter >= 1){
             //Le joueur ne peut pas sauter a nouveau
             jumpCancelled = false;
         }
+        if(multipleJump >= 2){
+            jumpCancelled = false;
+        }
+        if(multipleJump <= 0){
+            multipleJump = 0;
+        }
+    }
+
+//------- Cette fonction permet de faire une glissade sur le mur -------//
+    private void WallSlide(){
+        
+        //Sert a detecter la collision du rayon
+        RaycastHit hit;
+        //Cree un rayon invisible devant le personnage
+        Physics.Raycast(transform.position, transform.forward, out hit, 0.7f);
+        
+        //Si le rayon est en train de toucher un mur
+        if(hit.transform.tag == "Wall"){
+            //Le joueur descend plus lentement
+            playerVelocity.y = wallSlideSpeed * Time.deltaTime;
+            //On detecte que le joueur a touche le mur (pour un jump)
+            wallTouched = 2;
+        }
+        
     }
 
 
@@ -158,7 +212,7 @@ public class Mouvements : MonoBehaviour
     //------- Cette fonction permet au personnage de dasher -------//
     private void Dash(){
         if(dashBool == true){
-             move = new Vector3(input.x, 0, input.y) * dashSpeed;
+             move = new Vector3(input.x, 0, 0) * dashSpeed;
             controller.Move(move * Time.deltaTime * playerSpeed);
         }
     }
@@ -181,12 +235,13 @@ public class Mouvements : MonoBehaviour
         if(controller.isGrounded){
             multipleJump = 2;
             multipleJumpCounter = 0;
+            wallTouched = 0;
         } 
         
         //Bouge le joueur dans une direction choisie plus bas
         gameObject.transform.forward = move;
         //Met les inputs choisis dans la variable move (boutons enfonces)
-        move = new Vector3(input.x, 0, input.y);
+        move = new Vector3(input.x, 0, 0);
         //Bouge le joueur dans la direction definie par le move
         controller.Move(move * Time.deltaTime * playerSpeed);
 
@@ -195,6 +250,9 @@ public class Mouvements : MonoBehaviour
         //Permet au joueur detre affecte par sa velocite
         controller.Move(playerVelocity * Time.deltaTime);  
     }
+
+    
+
 
 
 

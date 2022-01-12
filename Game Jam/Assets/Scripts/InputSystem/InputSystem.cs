@@ -150,6 +150,17 @@ public class @InputSystem : IInputActionCollection, IDisposable
                     ""action"": ""Gliding"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cb2810fb-2346-4985-b196-b35daf6cd7bd"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Gliding"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -159,7 +170,7 @@ public class @InputSystem : IInputActionCollection, IDisposable
             ""actions"": [
                 {
                     ""name"": ""Throw"",
-                    ""type"": ""Value"",
+                    ""type"": ""Button"",
                     ""id"": ""7c7984cd-5506-4a5b-a2c9-ad440dc6d2c9"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -234,8 +245,6 @@ public class @InputSystem : IInputActionCollection, IDisposable
         m_ThrowNut = asset.FindActionMap("ThrowNut", throwIfNotFound: true);
         m_ThrowNut_Throw = m_ThrowNut.FindAction("Throw", throwIfNotFound: true);
         m_ThrowNut_Direction = m_ThrowNut.FindAction("Direction", throwIfNotFound: true);
-        
-        
     }
 
     public void Dispose()

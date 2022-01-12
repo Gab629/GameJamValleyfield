@@ -12,7 +12,7 @@ public class Mouvements : MonoBehaviour
     private Rigidbody rbCharacter;
     
 
-    // Variables pour la detection de sol/murs, la gravite et le statut de jump du personnage
+    // Variables pour la detection de sol/murs, la gravite et le statut du personnage
     private float gravityValue = -9f;
     private bool groundedPlayer;
     private int wallTouched = 0;
@@ -32,7 +32,6 @@ public class Mouvements : MonoBehaviour
     private float playerSpeed = 3f;
     public Vector2 input;
     public Vector3 move;
-    
 
 
     //Variables pour le nouveau input system
@@ -46,8 +45,14 @@ public class Mouvements : MonoBehaviour
 
     //Variable pour le gliding
     private float glidingSpeed = -100f;
+    private float isGliding;
 
-    [SerializeField] private float isGliding;
+    //Variable pour les commandes inversés
+    [SerializeField] private bool invertedCommands = false;
+
+
+
+
     //------- Cette fonction est appelle avant le start -------//
     private void Awake()
     {
@@ -235,14 +240,21 @@ public class Mouvements : MonoBehaviour
     }
     //------- Cette fonction permet au personnage de dasher -------//
     private void Dash(){
-        if(dashBool == true){
-             move = new Vector3(input.x, 0, 0) * dashSpeed;
+
+        if(dashBool == true && !invertedCommands)
+        {
+            move = new Vector3(input.x, 0, 0) * dashSpeed;
+            controller.Move(move * Time.deltaTime * playerSpeed);
+        }
+        else if(dashBool == true && invertedCommands)
+        {
+            move = new Vector3(-input.x, 0, 0) * dashSpeed;
             controller.Move(move * Time.deltaTime * playerSpeed);
         }
     }
 
 
-     //------- Cette fonction detecte si les boutons WASD sont enfonce -------//
+    //------- Cette fonction detecte si les boutons WASD sont enfonce -------//
     private void MovementsCharacter(InputAction.CallbackContext context)
     {
         input = context.ReadValue<Vector2>();
@@ -262,17 +274,32 @@ public class Mouvements : MonoBehaviour
             wallTouched = 0;
         } 
         
-        //Bouge le joueur dans une direction choisie plus bas
-        gameObject.transform.forward = move;
-        //Met les inputs choisis dans la variable move (boutons enfonces)
-        move = new Vector3(input.x, 0, 0);
-        //Bouge le joueur dans la direction definie par le move
-        controller.Move(move * Time.deltaTime * playerSpeed);
+        if(!invertedCommands){
+            //Bouge le joueur dans une direction choisie plus bas
+            gameObject.transform.forward = move;
+            //Met les inputs choisis dans la variable move (boutons enfonces)
+            move = new Vector3(input.x, 0, 0);
+            //Bouge le joueur dans la direction definie par le move
+            controller.Move(move * Time.deltaTime * playerSpeed);
 
-        //Permet au joueur detre affecte par la gravite
-        playerVelocity.y += gravityValue * Time.deltaTime;
-        //Permet au joueur detre affecte par sa velocite
-        controller.Move(playerVelocity * Time.deltaTime);  
+            //Permet au joueur detre affecte par la gravite
+            playerVelocity.y += gravityValue * Time.deltaTime;
+            //Permet au joueur detre affecte par sa velocite
+            controller.Move(playerVelocity * Time.deltaTime);    
+        }else{
+            //Bouge le joueur dans une direction choisie plus bas
+            gameObject.transform.forward = move;
+            //Met les inputs choisis dans la variable move (boutons enfonces)
+            move = new Vector3(-input.x, 0, 0);
+            //Bouge le joueur dans la direction definie par le move
+            controller.Move(move * Time.deltaTime * playerSpeed);
+
+            //Permet au joueur d'etre affecte par la gravite
+            playerVelocity.y += gravityValue * Time.deltaTime;
+            //Permet au joueur d'etre affecte par sa velocite
+            controller.Move(playerVelocity * Time.deltaTime);    
+        }
+        
     }
 
     

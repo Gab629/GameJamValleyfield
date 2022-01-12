@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ground
   - Ennemy
+  - MoveTowardsRight
+  - MoveTowardsLeft
   layers:
   - Default
   - TransparentFX

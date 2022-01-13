@@ -38,7 +38,7 @@ public class ThrowObject : MonoBehaviour
     //Variables pour le nouveau input system
     private InputSystem inputActions;
     
-    private GameObject gameManager;
+
 
 
     //------- Cette fonction est appelle avant le start -------//
@@ -56,11 +56,6 @@ public class ThrowObject : MonoBehaviour
        
     }
 
-    void Start()
-    {
-        gameManager = GameObject.Find("GameManager");
-    }
-
 
     //------- Cette fonction detecte la direction dont le joueur se deplace -------//
     private void ThrowDirection(InputAction.CallbackContext context)
@@ -73,10 +68,7 @@ public class ThrowObject : MonoBehaviour
     //------- Cette fonction detecte si le joueur clique sur la souris (pour lancer la noix) -------//
     private void ThrowNutButton(InputAction.CallbackContext context)
     {
-        if (gameManager.GetComponent<GameManager>().isPlaying) {
-            isThrowing = context.ReadValue<float>();
-        }
-        
+        isThrowing = context.ReadValue<float>();
     }
 
 

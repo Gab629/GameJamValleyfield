@@ -15,7 +15,7 @@ public class ThrowObject : MonoBehaviour
 
 
     //Variable pour toute les detection de la recharge de noix ou du lancer
-    private bool nutLoaded = false;
+    [SerializeField]private bool nutLoaded = false;
     private float isThrowing = 0;
 
 
@@ -24,20 +24,20 @@ public class ThrowObject : MonoBehaviour
     private Vector3 nutFixedPosition;
     private Quaternion nutFixedRotation;
 
-    [SerializeField] private bool nutRespawn = false;
+    private bool nutRespawn = false;
 
-    [SerializeField] private float nombreDeNoixMax = 0f;
+    private float nombreDeNoixMax = 0f;
 
     //Variables pour les directions de lancer du personnage
     private float currentValue;
-    [SerializeField]private float previousValue;
+    private float previousValue;
     private Vector2 throwDirection;
 
 
 
     //Variables pour le nouveau input system
     private InputSystem inputActions;
-    
+    private GameObject gameManager;
 
 
 
@@ -56,6 +56,10 @@ public class ThrowObject : MonoBehaviour
        
     }
 
+    void Start()
+    {
+        gameManager = GameObject.Find("GameManager");
+    }
 
     //------- Cette fonction detecte la direction dont le joueur se deplace -------//
     private void ThrowDirection(InputAction.CallbackContext context)
@@ -68,7 +72,9 @@ public class ThrowObject : MonoBehaviour
     //------- Cette fonction detecte si le joueur clique sur la souris (pour lancer la noix) -------//
     private void ThrowNutButton(InputAction.CallbackContext context)
     {
-        isThrowing = context.ReadValue<float>();
+        if (gameManager.GetComponent<GameManager>().isPlaying) {
+             isThrowing = context.ReadValue<float>();
+        }
     }
 
 
@@ -107,11 +113,11 @@ public class ThrowObject : MonoBehaviour
 
 
     //------- Cette fonction detecte si il y a une collision avec un objet trigger -------//
-    void OnTriggerExit(Collider collision)
+    void OnTriggerEnter(Collider collision)
     {
         if(collision.transform.tag == "Nut"){
             Destroy(collision.gameObject);
-            imageNut.SetActive(true);
+            //imageNut.SetActive(true);
             nutLoaded = true;
             nombreDeNoixMax ++;
             

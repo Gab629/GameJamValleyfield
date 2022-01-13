@@ -1,0 +1,612 @@
+fileFormatVersion: 2
+guid: 96e03f9d78f1dd048b183d8070b17c3e
+ModelImporter:
+  serializedVersion: 21100
+  internalIDToNameTable:
+  - first:
+      74: -2658732032666658580
+    second: Armature.001|hero-dash
+  - first:
+      74: 4002326365489323698
+    second: Armature.001|hero-idle
+  - first:
+      74: 1615094515951868468
+    second: Armature.001|hero-jump
+  - first:
+      74: -8843096789419932642
+    second: Armature.001|hero-tpose
+  - first:
+      74: 274581854176564759
+    second: Armature.001|hero-walk
+  - first:
+      74: -7119767764075033254
+    second: Armature.001|hero-dash //// Armature.001
+  - first:
+      74: 3006078603396526500
+    second: Armature.001|hero-dash //// hips
+  - first:
+      74: 5903782839097308783
+    second: Armature.001|hero-dash //// adbos
+  - first:
+      74: 3627313099225218918
+    second: Armature.001|hero-dash //// chest
+  - first:
+      74: -3968264906413535801
+    second: Armature.001|hero-dash //// shoudler.L
+  - first:
+      74: -2625833314378653311
+    second: Armature.001|hero-dash //// bicep.L
+  - first:
+      74: -5826614202555722936
+    second: Armature.001|hero-dash //// forearm.L
+  - first:
+      74: -7935736979921254758
+    second: Armature.001|hero-dash //// hand.L
+  - first:
+      74: -3435251685888893042
+    second: Armature.001|hero-dash //// neck
+  - first:
+      74: 1720472843171699387
+    second: Armature.001|hero-dash //// neck.001
+  - first:
+      74: -2251128263677520269
+    second: Armature.001|hero-dash //// head
+  - first:
+      74: 5272943867336881661
+    second: Armature.001|hero-dash //// ear.L
+  - first:
+      74: 5629628081234005886
+    second: Armature.001|hero-dash //// ear.R
+  - first:
+      74: 8649176964832071768
+    second: Armature.001|hero-dash //// shoudler.R
+  - first:
+      74: -1712109850194875285
+    second: Armature.001|hero-dash //// bicep.R
+  - first:
+      74: -5356024964658552957
+    second: Armature.001|hero-dash //// forearm.R
+  - first:
+      74: 2864238904734836349
+    second: Armature.001|hero-dash //// hand.R
+  - first:
+      74: 5703939813035300576
+    second: Armature.001|hero-dash //// queue
+  - first:
+      74: 2711769592653340563
+    second: Armature.001|hero-dash //// queue.005
+  - first:
+      74: 4366283511687355881
+    second: Armature.001|hero-dash //// queue.001
+  - first:
+      74: 1635303457066684242
+    second: Armature.001|hero-dash //// queue.006
+  - first:
+      74: -6449530992093827984
+    second: Armature.001|hero-dash //// queue.002
+  - first:
+      74: -3276514808143034102
+    second: Armature.001|hero-dash //// queue.007
+  - first:
+      74: -5963190052131410815
+    second: Armature.001|hero-dash //// queue.003
+  - first:
+      74: 6564381969156934448
+    second: Armature.001|hero-dash //// queue.008
+  - first:
+      74: 1930629867840257894
+    second: Armature.001|hero-dash //// queue.004
+  - first:
+      74: 3749048103946937353
+    second: Armature.001|hero-dash //// queue.009
+  - first:
+      74: -4046655916098486111
+    second: Armature.001|hero-dash //// thigh.L
+  - first:
+      74: -2212626485019556600
+    second: Armature.001|hero-dash //// tibia.L
+  - first:
+      74: 235790033003826831
+    second: Armature.001|hero-dash //// foot.L
+  - first:
+      74: 3028442075616809588
+    second: Armature.001|hero-dash //// thigh.R
+  - first:
+      74: 7654768002999819731
+    second: Armature.001|hero-dash //// tibia.R
+  - first:
+      74: -1611246355665383145
+    second: Armature.001|hero-dash //// foot.R
+  - first:
+      74: 1402652363023056967
+    second: Armature.001|hero-idle //// Armature.001
+  - first:
+      74: 7594580557239840891
+    second: Armature.001|hero-idle //// hips
+  - first:
+      74: 6899250855885458614
+    second: Armature.001|hero-idle //// adbos
+  - first:
+      74: 547811998938015247
+    second: Armature.001|hero-idle //// chest
+  - first:
+      74: -8906240696586644039
+    second: Armature.001|hero-idle //// shoudler.L
+  - first:
+      74: -4871006295026560209
+    second: Armature.001|hero-idle //// bicep.L
+  - first:
+      74: 3231103714216393009
+    second: Armature.001|hero-idle //// forearm.L
+  - first:
+      74: -2896755203121719509
+    second: Armature.001|hero-idle //// hand.L
+  - first:
+      74: 6569974587666625168
+    second: Armature.001|hero-idle //// neck
+  - first:
+      74: 8835193217515814471
+    second: Armature.001|hero-idle //// neck.001
+  - first:
+      74: -3058820726061253530
+    second: Armature.001|hero-idle //// head
+  - first:
+      74: 5360359759682488668
+    second: Armature.001|hero-idle //// ear.L
+  - first:
+      74: -7750335589439500346
+    second: Armature.001|hero-idle //// ear.R
+  - first:
+      74: 6466310601001902688
+    second: Armature.001|hero-idle //// shoudler.R
+  - first:
+      74: -2845731464138989699
+    second: Armature.001|hero-idle //// bicep.R
+  - first:
+      74: -5010155378413024175
+    second: Armature.001|hero-idle //// forearm.R
+  - first:
+      74: -2175004401780371078
+    second: Armature.001|hero-idle //// hand.R
+  - first:
+      74: 5957345113148951141
+    second: Armature.001|hero-idle //// queue
+  - first:
+      74: -8480344529855855771
+    second: Armature.001|hero-idle //// queue.005
+  - first:
+      74: -4913315054783655663
+    second: Armature.001|hero-idle //// queue.001
+  - first:
+      74: -8497938739854239332
+    second: Armature.001|hero-idle //// queue.006
+  - first:
+      74: -3012830979361456490
+    second: Armature.001|hero-idle //// queue.002
+  - first:
+      74: -8767591466380299109
+    second: Armature.001|hero-idle //// queue.007
+  - first:
+      74: 4119759607523532113
+    second: Armature.001|hero-idle //// queue.003
+  - first:
+      74: -2694029578137352435
+    second: Armature.001|hero-idle //// queue.008
+  - first:
+      74: 861806948470286239
+    second: Armature.001|hero-idle //// queue.004
+  - first:
+      74: -3650148523388314205
+    second: Armature.001|hero-idle //// queue.009
+  - first:
+      74: -4809940147859142598
+    second: Armature.001|hero-idle //// thigh.L
+  - first:
+      74: -3925563621894477141
+    second: Armature.001|hero-idle //// tibia.L
+  - first:
+      74: 926015693267722769
+    second: Armature.001|hero-idle //// foot.L
+  - first:
+      74: 1623898073857878784
+    second: Armature.001|hero-idle //// thigh.R
+  - first:
+      74: -4094683326727938075
+    second: Armature.001|hero-idle //// tibia.R
+  - first:
+      74: -2015368988607099237
+    second: Armature.001|hero-idle //// foot.R
+  - first:
+      74: 4258815861255131796
+    second: Armature.001|hero-jump //// Armature.001
+  - first:
+      74: 2458798819414978107
+    second: Armature.001|hero-jump //// hips
+  - first:
+      74: 7434800783053961981
+    second: Armature.001|hero-jump //// adbos
+  - first:
+      74: -6131829922856980618
+    second: Armature.001|hero-jump //// chest
+  - first:
+      74: -5844919963173533393
+    second: Armature.001|hero-jump //// shoudler.L
+  - first:
+      74: 4134320040692509125
+    second: Armature.001|hero-jump //// bicep.L
+  - first:
+      74: 6484497475747367096
+    second: Armature.001|hero-jump //// forearm.L
+  - first:
+      74: -5244892893833647015
+    second: Armature.001|hero-jump //// hand.L
+  - first:
+      74: -5539530862410245680
+    second: Armature.001|hero-jump //// neck
+  - first:
+      74: -7421486913475453160
+    second: Armature.001|hero-jump //// neck.001
+  - first:
+      74: 5416750868723384978
+    second: Armature.001|hero-jump //// head
+  - first:
+      74: -9051192549368644644
+    second: Armature.001|hero-jump //// ear.L
+  - first:
+      74: 6034019734840715011
+    second: Armature.001|hero-jump //// ear.R
+  - first:
+      74: -7005539479663111155
+    second: Armature.001|hero-jump //// shoudler.R
+  - first:
+      74: -1908416265398766424
+    second: Armature.001|hero-jump //// bicep.R
+  - first:
+      74: 1909052223055366655
+    second: Armature.001|hero-jump //// forearm.R
+  - first:
+      74: -7496844085996934136
+    second: Armature.001|hero-jump //// hand.R
+  - first:
+      74: 791906278527379064
+    second: Armature.001|hero-jump //// queue
+  - first:
+      74: 7009234839544751266
+    second: Armature.001|hero-jump //// queue.005
+  - first:
+      74: 8616026094644544376
+    second: Armature.001|hero-jump //// queue.001
+  - first:
+      74: -4684143225316419733
+    second: Armature.001|hero-jump //// queue.006
+  - first:
+      74: -7924082057602443752
+    second: Armature.001|hero-jump //// queue.002
+  - first:
+      74: 842614964236127319
+    second: Armature.001|hero-jump //// queue.007
+  - first:
+      74: -6471352001416794918
+    second: Armature.001|hero-jump //// queue.003
+  - first:
+      74: -8630405797140519635
+    second: Armature.001|hero-jump //// queue.008
+  - first:
+      74: 7325266786847575120
+    second: Armature.001|hero-jump //// queue.004
+  - first:
+      74: 8717888543608181933
+    second: Armature.001|hero-jump //// queue.009
+  - first:
+      74: -4988809311025675941
+    second: Armature.001|hero-jump //// thigh.L
+  - first:
+      74: 3850887511676498250
+    second: Armature.001|hero-jump //// tibia.L
+  - first:
+      74: 5385881887433229467
+    second: Armature.001|hero-jump //// foot.L
+  - first:
+      74: -3227218013289159750
+    second: Armature.001|hero-jump //// thigh.R
+  - first:
+      74: 1961437946714579595
+    second: Armature.001|hero-jump //// tibia.R
+  - first:
+      74: 7032167664970157869
+    second: Armature.001|hero-jump //// foot.R
+  - first:
+      74: -2192589453553592413
+    second: Armature.001|hero-tpose //// Armature.001
+  - first:
+      74: -5818495026950925132
+    second: Armature.001|hero-tpose //// hips
+  - first:
+      74: 5819453256740920431
+    second: Armature.001|hero-tpose //// adbos
+  - first:
+      74: 119218117289004763
+    second: Armature.001|hero-tpose //// chest
+  - first:
+      74: -8285078623771601563
+    second: Armature.001|hero-tpose //// shoudler.L
+  - first:
+      74: 5726886181171108523
+    second: Armature.001|hero-tpose //// bicep.L
+  - first:
+      74: -4404671404142382412
+    second: Armature.001|hero-tpose //// forearm.L
+  - first:
+      74: 2982444442703004133
+    second: Armature.001|hero-tpose //// hand.L
+  - first:
+      74: 1290958665811630991
+    second: Armature.001|hero-tpose //// neck
+  - first:
+      74: 9209579874147431370
+    second: Armature.001|hero-tpose //// neck.001
+  - first:
+      74: -5734771416813914870
+    second: Armature.001|hero-tpose //// head
+  - first:
+      74: -5763890389145702677
+    second: Armature.001|hero-tpose //// ear.L
+  - first:
+      74: -2216954600905489668
+    second: Armature.001|hero-tpose //// ear.R
+  - first:
+      74: -3561658133115810199
+    second: Armature.001|hero-tpose //// shoudler.R
+  - first:
+      74: -6273008656848452680
+    second: Armature.001|hero-tpose //// bicep.R
+  - first:
+      74: -8969032428567975622
+    second: Armature.001|hero-tpose //// forearm.R
+  - first:
+      74: 8049416438323744271
+    second: Armature.001|hero-tpose //// hand.R
+  - first:
+      74: -1131089025590559110
+    second: Armature.001|hero-tpose //// queue
+  - first:
+      74: 8017733703262979654
+    second: Armature.001|hero-tpose //// queue.005
+  - first:
+      74: 406475044487113151
+    second: Armature.001|hero-tpose //// queue.001
+  - first:
+      74: 2774481256616280406
+    second: Armature.001|hero-tpose //// queue.006
+  - first:
+      74: 5894521712064966938
+    second: Armature.001|hero-tpose //// queue.002
+  - first:
+      74: 7935827149152437871
+    second: Armature.001|hero-tpose //// queue.007
+  - first:
+      74: -7027021837179912509
+    second: Armature.001|hero-tpose //// queue.003
+  - first:
+      74: 3078570270500973554
+    second: Armature.001|hero-tpose //// queue.008
+  - first:
+      74: 7301254984867640540
+    second: Armature.001|hero-tpose //// queue.004
+  - first:
+      74: 7512589002573268182
+    second: Armature.001|hero-tpose //// queue.009
+  - first:
+      74: -6359980123838938121
+    second: Armature.001|hero-tpose //// thigh.L
+  - first:
+      74: -4882962419124836698
+    second: Armature.001|hero-tpose //// tibia.L
+  - first:
+      74: -4820166900237266105
+    second: Armature.001|hero-tpose //// foot.L
+  - first:
+      74: -3535900913509117908
+    second: Armature.001|hero-tpose //// thigh.R
+  - first:
+      74: -8404664363161094874
+    second: Armature.001|hero-tpose //// tibia.R
+  - first:
+      74: 9173439736677110852
+    second: Armature.001|hero-tpose //// foot.R
+  - first:
+      74: 1615630162272867982
+    second: Armature.001|hero-walk //// Armature.001
+  - first:
+      74: 8545482365999377721
+    second: Armature.001|hero-walk //// hips
+  - first:
+      74: -1778284949463099655
+    second: Armature.001|hero-walk //// adbos
+  - first:
+      74: -7959620494744147243
+    second: Armature.001|hero-walk //// chest
+  - first:
+      74: -5661508327725273589
+    second: Armature.001|hero-walk //// shoudler.L
+  - first:
+      74: 1343312036371739901
+    second: Armature.001|hero-walk //// bicep.L
+  - first:
+      74: 9139321829302455107
+    second: Armature.001|hero-walk //// forearm.L
+  - first:
+      74: 8138713500135838676
+    second: Armature.001|hero-walk //// hand.L
+  - first:
+      74: -7111836328523701492
+    second: Armature.001|hero-walk //// neck
+  - first:
+      74: -4270185424946226875
+    second: Armature.001|hero-walk //// neck.001
+  - first:
+      74: -6335154937356231000
+    second: Armature.001|hero-walk //// head
+  - first:
+      74: -6456747844229958939
+    second: Armature.001|hero-walk //// ear.L
+  - first:
+      74: 911741027517504006
+    second: Armature.001|hero-walk //// ear.R
+  - first:
+      74: -3252250155973565757
+    second: Armature.001|hero-walk //// shoudler.R
+  - first:
+      74: -3558035810356699562
+    second: Armature.001|hero-walk //// bicep.R
+  - first:
+      74: -5965032648617471813
+    second: Armature.001|hero-walk //// forearm.R
+  - first:
+      74: 4650645354738685021
+    second: Armature.001|hero-walk //// hand.R
+  - first:
+      74: -1500856797434502754
+    second: Armature.001|hero-walk //// queue
+  - first:
+      74: -146162530662560277
+    second: Armature.001|hero-walk //// queue.005
+  - first:
+      74: 8961222150084087453
+    second: Armature.001|hero-walk //// queue.001
+  - first:
+      74: 8650956058352765103
+    second: Armature.001|hero-walk //// queue.006
+  - first:
+      74: -7021314471420762710
+    second: Armature.001|hero-walk //// queue.002
+  - first:
+      74: 741633176807862840
+    second: Armature.001|hero-walk //// queue.007
+  - first:
+      74: -4127719478500780488
+    second: Armature.001|hero-walk //// queue.003
+  - first:
+      74: -1925495447311116219
+    second: Armature.001|hero-walk //// queue.008
+  - first:
+      74: 1054969826670410849
+    second: Armature.001|hero-walk //// queue.004
+  - first:
+      74: -715248191724278100
+    second: Armature.001|hero-walk //// queue.009
+  - first:
+      74: 2083013544940754658
+    second: Armature.001|hero-walk //// thigh.L
+  - first:
+      74: -3398650477622592644
+    second: Armature.001|hero-walk //// tibia.L
+  - first:
+      74: 6986498123378088009
+    second: Armature.001|hero-walk //// foot.L
+  - first:
+      74: -1709841124990143775
+    second: Armature.001|hero-walk //// thigh.R
+  - first:
+      74: 849229849300767158
+    second: Armature.001|hero-walk //// tibia.R
+  - first:
+      74: -359820133220215038
+    second: Armature.001|hero-walk //// foot.R
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 1
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 1
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

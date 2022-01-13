@@ -69,6 +69,11 @@ public class Mouvements : MonoBehaviour
     private static AudioSource audioSrc;
     
     private GameObject gameManager;
+    public GameObject tourTombeDroite;
+    public GameObject tourTombeGauche;
+    public GameObject trouArbre;
+
+
 
     //------- Cette fonction est appelle avant le start -------//
     private void Awake()
@@ -159,6 +164,12 @@ public class Mouvements : MonoBehaviour
         {
             onConveyor = 1;
             //playerSpeed = 0.1f;
+        }else if(collision.transform.tag == "TourTombe"){
+            Destroy(tourTombeDroite);
+            Destroy(tourTombeGauche);
+        }else if(collision.transform.tag == "TrouArbre"){
+            Destroy(trouArbre);
+            
         }
     }
 

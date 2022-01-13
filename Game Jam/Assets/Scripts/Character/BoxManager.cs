@@ -50,6 +50,8 @@ public class BoxManager : MonoBehaviour
             PuttingDown();
             gameObject.GetComponent<PlayerHealth>().hitNb = 0;
         }
+
+        
     }
 
     
@@ -66,7 +68,9 @@ public class BoxManager : MonoBehaviour
         }
     }
 
-    private void PuttingDown() {
+    public void PuttingDown() {
+
+        Debug.Log("ayo drop");
         boxCarried.SetActive(false);
         hasBox = false;
 

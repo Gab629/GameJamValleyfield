@@ -66,8 +66,22 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 67016818c3e6cd4ab73204a64e8c57ed
     GuidInternal: 
-    m_lastTime: -8585595187187678533
-    List: []
+    m_lastTime: -8585595072487526339
+    List:
+    - name: Main
+      guid: 914ec0cfb809d84393fb3c6ba57ca464
+      id: 3161908922
+      PathAndIcons:
+      - ElementName: SoundBanks
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 67016818c3e6cd4ab73204a64e8c57ed
+      - ElementName: Main
+        ObjectType: 7
+        guid: 914ec0cfb809d84393fb3c6ba57ca464
+      Path: SoundBanks\Default Work Unit\Main
   EventWwu:
   - PhysicalPath: Events\Default Work Unit.wwu
     PathAndIcons:
@@ -80,8 +94,42 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 1509093024fa894c9fa157a2b69a392a
     GuidInternal: 
-    m_lastTime: -8585595187188779540
-    List: []
+    m_lastTime: -8585595072487566379
+    List:
+    - name: Footsteps
+      guid: 70dc4a0eb04e7543ad7046fba0eda4e4
+      id: 2385628198
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 1509093024fa894c9fa157a2b69a392a
+      - ElementName: Footsteps
+        ObjectType: 3
+        guid: 70dc4a0eb04e7543ad7046fba0eda4e4
+      Path: Events\Default Work Unit\Footsteps
+      maxAttenuation: 0
+      maxDuration: 1.286875
+      minDuration: 0.181708
+    - name: Spit
+      guid: c8b1736a384a4941813fea2db1825b25
+      id: 823131355
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 1509093024fa894c9fa157a2b69a392a
+      - ElementName: Spit
+        ObjectType: 3
+        guid: c8b1736a384a4941813fea2db1825b25
+      Path: Events\Default Work Unit\Spit
+      maxAttenuation: 0
+      maxDuration: 0.524263
+      minDuration: 0.461882
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     PathAndIcons:
@@ -122,8 +170,58 @@ MonoBehaviour:
     ParentPath: Switches\Default Work Unit
     guid: c56eb04c5e8a0b4e996ee3e60df9c9fa
     GuidInternal: 
-    m_lastTime: -8585595187187608467
-    List: []
+    m_lastTime: -8585595073169823604
+    List:
+    - name: Footsteps
+      guid: 56d114f310f6a247816620af1907e47b
+      id: 2385628198
+      PathAndIcons:
+      - ElementName: Switches
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: c56eb04c5e8a0b4e996ee3e60df9c9fa
+      - ElementName: Footsteps
+        ObjectType: 11
+        guid: 56d114f310f6a247816620af1907e47b
+      Path: Switches\Default Work Unit\Footsteps
+      values:
+      - name: Grass
+        guid: 5df304babdf3e342a386e1e7cbfa752a
+        id: 4248645337
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: c56eb04c5e8a0b4e996ee3e60df9c9fa
+        - ElementName: Footsteps
+          ObjectType: 11
+          guid: 56d114f310f6a247816620af1907e47b
+        - ElementName: Grass
+          ObjectType: 10
+          guid: 5df304babdf3e342a386e1e7cbfa752a
+      - name: Wood
+        guid: 2b9789c3155cda499405a4b69d26f1fd
+        id: 2058049674
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: c56eb04c5e8a0b4e996ee3e60df9c9fa
+        - ElementName: Footsteps
+          ObjectType: 11
+          guid: 56d114f310f6a247816620af1907e47b
+        - ElementName: Wood
+          ObjectType: 10
+          guid: 2b9789c3155cda499405a4b69d26f1fd
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
   TriggerWwu:
   - PhysicalPath: Triggers\Default Work Unit.wwu
     PathAndIcons:

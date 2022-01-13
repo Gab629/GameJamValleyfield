@@ -45,8 +45,6 @@ public class BoxManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(canTakeBox);
-
         positionLeft = new Vector3(gameObject.transform.position.x - 1, gameObject.transform.position.y, gameObject.transform.position.z);
         positionRight = new Vector3(gameObject.transform.position.x + 1, gameObject.transform.position.y, gameObject.transform.position.z);
 
@@ -55,6 +53,8 @@ public class BoxManager : MonoBehaviour
             gameObject.GetComponent<PlayerHealth>().hitNb = 0;
         }
     }
+
+    
 
     private void CarryButton(InputAction.CallbackContext context){
         if (GameManager.GetComponent<GameManager>().isPlaying) {
@@ -82,6 +82,15 @@ public class BoxManager : MonoBehaviour
     }
 
     private void TakeBox() {
+        boxCarried.SetActive(true);
+        hasBox = true;
+
+        GameObject boxIndependant = GameObject.FindGameObjectWithTag("Box");
+        Destroy(boxIndependant);
+    }
+
+    public void ResetBox(){
+        
         boxCarried.SetActive(true);
         hasBox = true;
 

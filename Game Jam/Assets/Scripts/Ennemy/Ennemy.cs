@@ -14,6 +14,7 @@ public class Ennemy : MonoBehaviour
     public Slider slider;
 
     //TODO: variable public pour l'Animator
+    private Animator animator;
 
 
     // ============================== **
@@ -23,6 +24,7 @@ public class Ennemy : MonoBehaviour
     {
         health = maxHealth;
         slider.value = CalculateHealth();
+        animator = gameObject.GetComponent<Animator>();
     }
 
     // ============================== **
@@ -46,11 +48,6 @@ public class Ennemy : MonoBehaviour
             healthBarUI.SetActive(true);
         }
 
-        // Detruit le gameObject s'il n'a plus de vie
-        if (health <= 0) {
-            Destroy(gameObject);
-        }
-
         // La vie ne peut depasser le maximum de vie
         if (health > maxHealth) {
             health = maxHealth;
@@ -71,6 +68,18 @@ public class Ennemy : MonoBehaviour
     // ============================== **
     public void TakeDamage(float damage) {
         health -= damage;
+
+        // Detruit le gameObject s'il n'a plus de vie
+        if (health <= 0)
+        {
+            animator.SetTrigger("die");
+            Invoke("KillEnnemy", 6.0f);
+        }
     }
 
+
+    private void KillEnnemy()
+    {
+        Destroy(gameObject);
+    }
 }

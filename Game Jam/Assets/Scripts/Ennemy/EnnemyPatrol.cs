@@ -23,6 +23,9 @@ public class EnnemyPatrol : MonoBehaviour
     private bool isMovingRight = false;
     private bool isAttacking = false;
 
+    //TODO: variable public pour l'Animator
+    private Animator animator;
+
 
     // Canvas object
     public Slider slider;
@@ -37,6 +40,7 @@ public class EnnemyPatrol : MonoBehaviour
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
         gameManager = GameObject.Find("GameManager");
+        animator = gameObject.GetComponent<Animator>();
     }
 
     // ============================== **
@@ -75,6 +79,7 @@ public class EnnemyPatrol : MonoBehaviour
             //Changement d'etat vers la Chasse
             if (distance < chaseRange) {
                 currentState = "Chase";
+                animator.SetBool("rage", true);
             }
 
         } else if (currentState == "Chase") {
@@ -99,11 +104,13 @@ public class EnnemyPatrol : MonoBehaviour
             //Changement d'etat vers l'attaque
             if (distance < attackRange) {
                 currentState = "Attack";
+                animator.SetTrigger("attaquer");
             }
 
             //Changement d'etat vers l'Idle
             if (distance > chaseRange) {
                 currentState = "Idle";
+                animator.SetBool("rage", false);
             }
 
         } else if (currentState == "Attack") {

@@ -12,16 +12,215 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b387ae6dc84acfb4bbd4a80f2eee5c67, type: 3}
   m_Name: AkWwiseProjectData
   m_EditorClassIdentifier: 
-  AcousticTextureWwu: []
-  AuxBusWwu: []
-  BankWwu: []
-  EventWwu: []
-  RtpcWwu: []
-  StateWwu: []
-  SwitchWwu: []
-  TriggerWwu: []
+  AcousticTextureWwu:
+  - PhysicalPath: Virtual Acoustics\Default Work Unit.wwu
+    PathAndIcons:
+    - ElementName: Virtual Acoustics
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Default Work Unit
+      ObjectType: 12
+      guid: 1401ff2c54b7d54886ac6d25091f2944
+    ParentPath: Virtual Acoustics\Default Work Unit
+    guid: 1401ff2c54b7d54886ac6d25091f2944
+    GuidInternal: 
+    m_lastTime: -8585595470911118671
+    List: []
+  AuxBusWwu:
+  - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
+    PathAndIcons:
+    - ElementName: Master-Mixer Hierarchy
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Default Work Unit
+      ObjectType: 12
+      guid: 563210491e331047a236ceddd860cded
+    ParentPath: Master-Mixer Hierarchy\Default Work Unit
+    guid: 563210491e331047a236ceddd860cded
+    GuidInternal: 
+    m_lastTime: -8585595470911639144
+    List:
+    - name: Master Audio Bus
+      guid: d8a41415a61d2a41a17e75ca0c2149f3
+      id: 3803692087
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 563210491e331047a236ceddd860cded
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus
+  BankWwu:
+  - PhysicalPath: SoundBanks\Default Work Unit.wwu
+    PathAndIcons:
+    - ElementName: SoundBanks
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Default Work Unit
+      ObjectType: 12
+      guid: c8d406708a57ab4f8ac44d1e6f26379a
+    ParentPath: SoundBanks\Default Work Unit
+    guid: c8d406708a57ab4f8ac44d1e6f26379a
+    GuidInternal: 
+    m_lastTime: -8585595470911178721
+    List:
+    - name: Main
+      guid: d57a8c0ac8152f46bdb7ef4120a2e8f2
+      id: 3161908922
+      PathAndIcons:
+      - ElementName: SoundBanks
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: c8d406708a57ab4f8ac44d1e6f26379a
+      - ElementName: Main
+        ObjectType: 7
+        guid: d57a8c0ac8152f46bdb7ef4120a2e8f2
+      Path: SoundBanks\Default Work Unit\Main
+  EventWwu:
+  - PhysicalPath: Events\Default Work Unit.wwu
+    PathAndIcons:
+    - ElementName: Events
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Default Work Unit
+      ObjectType: 12
+      guid: 5e36deb02dbc3143b7ff0a7e2cfaf10c
+    ParentPath: Events\Default Work Unit
+    guid: 5e36deb02dbc3143b7ff0a7e2cfaf10c
+    GuidInternal: 
+    m_lastTime: -8585595470911929408
+    List:
+    - name: Footsteps
+      guid: 554afb646535f44e9373178bcd0819ae
+      id: 2385628198
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 5e36deb02dbc3143b7ff0a7e2cfaf10c
+      - ElementName: Footsteps
+        ObjectType: 3
+        guid: 554afb646535f44e9373178bcd0819ae
+      Path: Events\Default Work Unit\Footsteps
+      maxAttenuation: 0
+      maxDuration: 1.286875
+      minDuration: 0.181708
+  RtpcWwu:
+  - PhysicalPath: Game Parameters\Default Work Unit.wwu
+    PathAndIcons:
+    - ElementName: Game Parameters
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Default Work Unit
+      ObjectType: 12
+      guid: 44939f2d01366e4d81368f8cad867905
+    ParentPath: Game Parameters\Default Work Unit
+    guid: 44939f2d01366e4d81368f8cad867905
+    GuidInternal: 
+    m_lastTime: -8585595470911869349
+    List: []
+  StateWwu:
+  - PhysicalPath: States\Default Work Unit.wwu
+    PathAndIcons:
+    - ElementName: States
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Default Work Unit
+      ObjectType: 12
+      guid: a5a2721f14d9254091d4f41bbc8489c5
+    ParentPath: States\Default Work Unit
+    guid: a5a2721f14d9254091d4f41bbc8489c5
+    GuidInternal: 
+    m_lastTime: -8585595470911158707
+    List: []
+  SwitchWwu:
+  - PhysicalPath: Switches\Default Work Unit.wwu
+    PathAndIcons:
+    - ElementName: Switches
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Default Work Unit
+      ObjectType: 12
+      guid: b34068d0ec3bad4ea435e6d29c1a6220
+    ParentPath: Switches\Default Work Unit
+    guid: b34068d0ec3bad4ea435e6d29c1a6220
+    GuidInternal: 
+    m_lastTime: -8585595470911148697
+    List:
+    - name: Footsteps
+      guid: 60fd8ae963891943b3c06b3e58c85626
+      id: 2385628198
+      PathAndIcons:
+      - ElementName: Switches
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: b34068d0ec3bad4ea435e6d29c1a6220
+      - ElementName: Footsteps
+        ObjectType: 11
+        guid: 60fd8ae963891943b3c06b3e58c85626
+      Path: Switches\Default Work Unit\Footsteps
+      values:
+      - name: Grass
+        guid: d1b55b8824535847beebf3d1e557bf6c
+        id: 4248645337
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: b34068d0ec3bad4ea435e6d29c1a6220
+        - ElementName: Footsteps
+          ObjectType: 11
+          guid: 60fd8ae963891943b3c06b3e58c85626
+        - ElementName: Grass
+          ObjectType: 10
+          guid: d1b55b8824535847beebf3d1e557bf6c
+      - name: Wood
+        guid: b8c8ca228e79564fa2f0c68ee6c7d60b
+        id: 2058049674
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: b34068d0ec3bad4ea435e6d29c1a6220
+        - ElementName: Footsteps
+          ObjectType: 11
+          guid: 60fd8ae963891943b3c06b3e58c85626
+        - ElementName: Wood
+          ObjectType: 10
+          guid: b8c8ca228e79564fa2f0c68ee6c7d60b
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
+  TriggerWwu:
+  - PhysicalPath: Triggers\Default Work Unit.wwu
+    PathAndIcons:
+    - ElementName: Triggers
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Default Work Unit
+      ObjectType: 12
+      guid: f939be40ad76ad4287bd3608294cd0fb
+    ParentPath: Triggers\Default Work Unit
+    guid: f939be40ad76ad4287bd3608294cd0fb
+    GuidInternal: 
+    m_lastTime: -8585595470911128676
+    List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 
+  ExpandedWaapiItemIds: 0a0000000b0000000d0000000e0000000f000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

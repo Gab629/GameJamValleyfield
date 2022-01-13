@@ -61,6 +61,10 @@ public class Mouvements : MonoBehaviour
     //Variable pour les commandes inversés
     public bool invertedCommands = false;
 
+    //Variables pour les steps
+    private float cycleStep; //interval qui va appeller le void de son
+    [SerializeField] private float stepSpeed = 10f; //vitesse que le son joue quand le joueur marche
+
 
 
 
@@ -128,6 +132,7 @@ public class Mouvements : MonoBehaviour
         DoubleJump(); //COMP DOUBLE JUMP
         OnConveyor();
 
+        ProgressStepCycle();
     }
 
 
@@ -388,19 +393,30 @@ public class Mouvements : MonoBehaviour
 
     
 
+    private void ProgressStepCycle(){
 
+        //donne le rythme du son des footstep
+        cycleStep += stepSpeed*Time.deltaTime;       
+        if(!(input.x !=0 || input.y != 0)){
+            return;
+        }
 
+        //appelle la fontion PlayFootstepAudio apres x temps et quand le joueur bouge
+        if (cycleStep >= 1f && (input.x !=0 || input.y != 0)) {
+            cycleStep = cycleStep % 1f;
+            PlayFootStepAudio();
+        }
+    }
 
+     private void PlayFootStepAudio(){
+        if(!controller.isGrounded){
+            return;
+        }
 
-
-
-
-
-
-
-
-
-
+        Debug.Log("step");
+        
+        AkSoundEngine.PostEvent("footstep", gameObject);
+    }
 
 
 

@@ -28640,8 +28640,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BindingMode: 4
   m_FollowOffset: {x: 0, y: 0.78, z: -4.48}
-  m_XDamping: 0
-  m_YDamping: 0
+  m_XDamping: 0.5
+  m_YDamping: 0.5
   m_ZDamping: 0
   m_AngularDampingMode: 0
   m_PitchDamping: 0
@@ -30714,7 +30714,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1891728641}
-  m_LocalRotation: {x: 0.08608294, y: 1e-45, z: 0, w: 0.996288}
+  m_LocalRotation: {x: 0.08608294, y: -1e-45, z: 0, w: 0.996288}
   m_LocalPosition: {x: 45.09, y: 2.69, z: -9.96}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -31801,7 +31801,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.7786753, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -31817,13 +31817,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1983564486}
-  m_LocalRotation: {x: 0.08608294, y: 1e-45, z: 0, w: 0.996288}
+  m_LocalRotation: {x: 0.08608294, y: -1e-45, z: -0, w: 0.996288}
   m_LocalPosition: {x: 45.09, y: 2.69, z: -9.96}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1703285979}
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1985645958 stripped
 Transform:
@@ -32580,7 +32580,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2048038011}
-  - component: {fileID: 2048038010}
   m_Layer: 0
   m_Name: WwiseGlobal
   m_TagString: Untagged
@@ -32588,31 +32587,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2048038010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2048038009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f541bd30a1d72f4a881fb6330fb358e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  InitializationSettings: {fileID: 11400000, guid: e82d6810b7d7b064b84cf89fd94db7c5, type: 2}
-  basePath: 
-  language: 
-  defaultPoolSize: 0
-  lowerPoolSize: 0
-  streamingPoolSize: 0
-  memoryCutoffThreshold: 0
-  monitorPoolSize: 0
-  monitorQueuePoolSize: 0
-  callbackManagerBufferSize: 0
-  spatialAudioPoolSize: 0
-  maxSoundPropagationDepth: 0
-  engineLogging: 0
 --- !u!4 &2048038011
 Transform:
   m_ObjectHideFlags: 0
@@ -32625,7 +32599,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2062511145 stripped
 Transform:

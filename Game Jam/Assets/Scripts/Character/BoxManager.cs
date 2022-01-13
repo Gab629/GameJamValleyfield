@@ -24,7 +24,6 @@ public class BoxManager : MonoBehaviour
 
     private GameObject gameManager;
 
-
     void Awake() {
         inputActions = new InputSystem();
 
@@ -65,7 +64,6 @@ public class BoxManager : MonoBehaviour
 
             }
         }
-
     }
 
     private void PuttingDown() {

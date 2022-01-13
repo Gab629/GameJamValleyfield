@@ -29,6 +29,7 @@ public class EnnemyPatrol : MonoBehaviour
     public GameObject attackCollider;
 
     private GameObject gameManager;
+
     // ============================== **
     // Methode Start()
     // ============================== **
@@ -46,7 +47,6 @@ public class EnnemyPatrol : MonoBehaviour
         if (gameManager.GetComponent<GameManager>().isPlaying) {
             CheckState(); 
         }
-
     }
 
     // ============================== **

@@ -28,6 +28,7 @@ public class EnnemyTower : MonoBehaviour
     private Vector2 throwDirection;
 
     private GameObject gameManager;
+
     // ============================== **
     // Methode Start()
     // ============================== **
@@ -43,10 +44,9 @@ public class EnnemyTower : MonoBehaviour
     // Methode Update()
     // ============================== **
     void Update() {
+        float distance = Vector3.Distance(transform.position, target.position);
 
         if (gameManager.GetComponent<GameManager>().isPlaying) {
-            float distance = Vector3.Distance(transform.position, target.position);
-
             if (isSeeingPlayer) {
                 if (target.position.x > transform.position.x) {
                     // vers la droite
@@ -73,9 +73,8 @@ public class EnnemyTower : MonoBehaviour
                     Attack();
                     isThrowing = false;
                 }
-            }  
+            }
         }
-
 
     }
 

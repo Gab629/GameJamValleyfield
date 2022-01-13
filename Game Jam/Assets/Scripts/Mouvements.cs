@@ -66,6 +66,10 @@ public class Mouvements : MonoBehaviour
     public AudioClip playerSaute;
     public AudioClip playerDash;
     private static AudioSource audioSrc;
+
+    //Variables pour les steps
+    private float cycleStep; //interval qui va appeller le void de son
+    [SerializeField] private float stepSpeed = 10f; //vitesse que le son joue quand le joueur marche
     
     private GameObject gameManager;
 
@@ -116,6 +120,9 @@ public class Mouvements : MonoBehaviour
 
         //cherche le audio source
         audioSrc = GetComponent<AudioSource>();
+
+        // headBob.Setup(camera, intervalStep);
+        cycleStep = 0f;
     }
 
 
@@ -141,6 +148,8 @@ public class Mouvements : MonoBehaviour
             DoubleJump(); //COMP DOUBLE JUMP
             OnConveyor();
         }
+
+        ProgressStepCycle(playerSpeed);
 
     }
 
@@ -272,9 +281,6 @@ public class Mouvements : MonoBehaviour
             //Le saut est pris en compte dans une variable
             multipleJumpCounter ++;
 
-            // //joue le son
-                audioSrc.PlayOneShot(playerSaute);
-
         //Si le joueur appuie sur espace et si il a touche le mur
         }else if(wallTouched > 0 && JumpBool == true)
         {
@@ -282,9 +288,6 @@ public class Mouvements : MonoBehaviour
             playerVelocity.y += doubleJumpForceWall * Time.deltaTime;
             //On detecte qu'il a saute du mur
             wallTouched --;
-
-            // //joue le son
-                audioSrc.PlayOneShot(playerSaute);
         }
 
         //Si le compteur de saut est plus grand que 1
@@ -434,6 +437,32 @@ public class Mouvements : MonoBehaviour
             controller.Move(playerVelocity * Time.deltaTime);    
         }
         
+    }
+
+    private void ProgressStepCycle(float playerSpeed){
+
+        //donne le rythme du son des footstep
+        cycleStep += stepSpeed*Time.deltaTime;       
+        if(!(input.x !=0 || input.y != 0)){
+            return;
+        }
+
+        //appelle la fontion PlayFootstepAudio apres x temps et quand le joueur bouge
+        if (cycleStep >= 1f && (input.x !=0 || input.y != 0)) {
+            cycleStep = cycleStep % 1f;
+            PlayFootStepAudio();
+        }
+    }
+
+
+    private void PlayFootStepAudio(){
+        if(!controller.isGrounded){
+            return;
+        }
+
+        Debug.Log("step");
+        
+        AkSoundEngine.PostEvent("Footsteps", gameObject);
     }
 
     

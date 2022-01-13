@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="12" SoundbankVersion="140">
+	<RootPaths>
+		<ProjectRoot>C:\Users\azpma\Desktop\GameJamValleyfield\Game Jam\Game Jam_WwiseProject\</ProjectRoot>
+		<SourceFilesRoot>C:\Users\azpma\Desktop\GameJamValleyfield\Game Jam\Game Jam_WwiseProject\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>C:\Users\azpma\Desktop\GameJamValleyfield\Game Jam\Game Jam_WwiseProject\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>C:\Users\azpma\Desktop\GameJamValleyfield\Game Jam\Game Jam_WwiseProject\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<StreamedFiles/>
+	<MediaFilesNotInAnyBank/>
+	<SoundBanks>
+		<SoundBank Id="1355168291" Language="SFX" Hash="3690994985">
+			<ObjectPath>Init</ObjectPath>
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+		</SoundBank>
+		<SoundBank Id="3161908922" Language="SFX" Hash="496853401">
+			<ObjectPath>\SoundBanks\Default Work Unit\Main</ObjectPath>
+			<ShortName>Main</ShortName>
+			<Path>Main.bnk</Path>
+			<IncludedEvents>
+				<Event Id="2385628198" Name="Footsteps" ObjectPath="\Events\Default Work Unit\Footsteps" DurationType="OneShot" DurationMin="0.181708" DurationMax="1.286875">
+					<IncludedMemoryFiles>
+						<File Id="97771941" Language="SFX">
+							<ShortName>Footstep_Wood_5.wav</ShortName>
+							<Path>SFX\Footstep_Wood_5_10C4C929.wem</Path>
+						</File>
+						<File Id="141021680" Language="SFX">
+							<ShortName>FootStep_Wood_1.wav</ShortName>
+							<Path>SFX\FootStep_Wood_1_10C4C929.wem</Path>
+						</File>
+						<File Id="161241702" Language="SFX">
+							<ShortName>Footstep_Wood_3.wav</ShortName>
+							<Path>SFX\Footstep_Wood_3_10C4C929.wem</Path>
+						</File>
+						<File Id="182770203" Language="SFX">
+							<ShortName>Footstep_Grass_6.wav</ShortName>
+							<Path>SFX\Footstep_Grass_6_10C4C929.wem</Path>
+						</File>
+						<File Id="234555929" Language="SFX">
+							<ShortName>Footstep_Grass_3.wav</ShortName>
+							<Path>SFX\Footstep_Grass_3_10C4C929.wem</Path>
+						</File>
+						<File Id="342244500" Language="SFX">
+							<ShortName>Footstep_Grass_1.wav</ShortName>
+							<Path>SFX\Footstep_Grass_1_10C4C929.wem</Path>
+						</File>
+						<File Id="452457468" Language="SFX">
+							<ShortName>Footstep_Grass_7.wav</ShortName>
+							<Path>SFX\Footstep_Grass_7_10C4C929.wem</Path>
+						</File>
+						<File Id="499659390" Language="SFX">
+							<ShortName>Footstep_Grass_2.wav</ShortName>
+							<Path>SFX\Footstep_Grass_2_10C4C929.wem</Path>
+						</File>
+						<File Id="675007153" Language="SFX">
+							<ShortName>Footstep_Grass_5.wav</ShortName>
+							<Path>SFX\Footstep_Grass_5_10C4C929.wem</Path>
+						</File>
+						<File Id="759791532" Language="SFX">
+							<ShortName>FootStep_Wood_2.wav</ShortName>
+							<Path>SFX\FootStep_Wood_2_10C4C929.wem</Path>
+						</File>
+						<File Id="804304978" Language="SFX">
+							<ShortName>Footstep_Wood_7.wav</ShortName>
+							<Path>SFX\Footstep_Wood_7_10C4C929.wem</Path>
+						</File>
+						<File Id="821668767" Language="SFX">
+							<ShortName>Footstep_Wood_4.wav</ShortName>
+							<Path>SFX\Footstep_Wood_4_10C4C929.wem</Path>
+						</File>
+						<File Id="850596959" Language="SFX">
+							<ShortName>Footstep_Grass_4.wav</ShortName>
+							<Path>SFX\Footstep_Grass_4_10C4C929.wem</Path>
+						</File>
+						<File Id="992924937" Language="SFX">
+							<ShortName>Footstep_Wood_6.wav</ShortName>
+							<Path>SFX\Footstep_Wood_6_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+					<DefaultSwitchValue>{BA04F35D-F3BD-42E3-A386-E1E7CBFA752A}</DefaultSwitchValue>
+					<SwitchContainers>
+						<SwitchContainer SwitchValue="{C389972B-5C15-49DA-9405-A4B69D26F1FD}">
+							<Media>
+								<File Id="97771941"/>
+								<File Id="141021680"/>
+								<File Id="161241702"/>
+								<File Id="759791532"/>
+								<File Id="804304978"/>
+								<File Id="821668767"/>
+								<File Id="992924937"/>
+							</Media>
+						</SwitchContainer>
+						<SwitchContainer SwitchValue="{BA04F35D-F3BD-42E3-A386-E1E7CBFA752A}">
+							<Media>
+								<File Id="182770203"/>
+								<File Id="234555929"/>
+								<File Id="342244500"/>
+								<File Id="452457468"/>
+								<File Id="499659390"/>
+								<File Id="675007153"/>
+								<File Id="850596959"/>
+							</Media>
+						</SwitchContainer>
+					</SwitchContainers>
+				</Event>
+				<Event Id="823131355" Name="Spit" ObjectPath="\Events\Default Work Unit\Spit" DurationType="OneShot" DurationMin="0.461882" DurationMax="0.524263">
+					<IncludedMemoryFiles>
+						<File Id="350515929" Language="SFX">
+							<ShortName>Tire_Character.wav</ShortName>
+							<Path>SFX\Tire_Character_10C4C929.wem</Path>
+						</File>
+						<File Id="672831908" Language="SFX">
+							<ShortName>Tire_Character_3.wav</ShortName>
+							<Path>SFX\Tire_Character_3_10C4C929.wem</Path>
+						</File>
+						<File Id="961556010" Language="SFX">
+							<ShortName>Tire_Character_2.wav</ShortName>
+							<Path>SFX\Tire_Character_2_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+			</IncludedEvents>
+			<SwitchGroups>
+				<SwitchGroup Id="2385628198" Name="Footsteps" ObjectPath="\Switches\Default Work Unit\Footsteps" GUID="{F314D156-F610-47A2-8166-20AF1907E47B}">
+					<Switches>
+						<Switch Id="4248645337" Name="Grass" ObjectPath="\Switches\Default Work Unit\Footsteps\Grass" GUID="{BA04F35D-F3BD-42E3-A386-E1E7CBFA752A}"/>
+						<Switch Id="2058049674" Name="Wood" ObjectPath="\Switches\Default Work Unit\Footsteps\Wood" GUID="{C389972B-5C15-49DA-9405-A4B69D26F1FD}"/>
+					</Switches>
+				</SwitchGroup>
+			</SwitchGroups>
+		</SoundBank>
+	</SoundBanks>
+</SoundBanksInfo>

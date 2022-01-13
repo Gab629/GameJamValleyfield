@@ -20,8 +20,7 @@ public class PlayerHealth : MonoBehaviour
 
     private bool isImmune = false;
     public float immunityTime = 3f;
-    
-    public bool isDead = false;
+    private bool isDead = false;
 
     //TEST
     public int hitNb;
@@ -44,12 +43,7 @@ public class PlayerHealth : MonoBehaviour
     void Update()
     {
         CheckHealth();
-
-        if(isDead == true){
-            
-            Invoke("RespawnCharacter", 3f);
-        }
-        
+        RespawnCharacter();
     }
 
 
@@ -121,11 +115,12 @@ public class PlayerHealth : MonoBehaviour
     // Fait revivre le joueur apres sa mort
     // ============================== **
     private void RespawnCharacter(){
+        if(isDead == true){
             character.SetActive(true);
             character.transform.position = positionCheckpoint;
             isDead = false;
             health = 250f;
-            GetComponent<BoxManager>().ResetBox();
+        }
     }
 
     // ============================== **

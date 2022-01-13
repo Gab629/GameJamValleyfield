@@ -394,6 +394,88 @@
 						</GroupingList>
 					</GroupingInfo>
 				</SwitchContainer>
+				<RandomSequenceContainer Name="TireNut" ID="{7021CC55-303E-4335-A488-AD302CB99463}" ShortID="1047279148">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5D85CD30-2287-45B5-9188-43F16199D017}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{49103256-331E-4710-A236-CEDDD860CDED}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="Tire_Character" ID="{8AFCCFB2-4C00-44F9-B3BA-3F7C590B5AD7}" ShortID="615026794">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5D85CD30-2287-45B5-9188-43F16199D017}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{49103256-331E-4710-A236-CEDDD860CDED}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Tire_Character" ID="{FF4C5098-C340-4746-885F-E1F2917804F5}">
+									<Language>SFX</Language>
+									<AudioFile>Tire_Character.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="138818829"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="Tire_Character" ID="{FF4C5098-C340-4746-885F-E1F2917804F5}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Tire_Character_2" ID="{BF3CA78A-DA69-494C-9EC1-9BDC5843459D}" ShortID="935215480">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5D85CD30-2287-45B5-9188-43F16199D017}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{49103256-331E-4710-A236-CEDDD860CDED}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Tire_Character_2" ID="{786E2039-D5B3-4054-9971-8E8765F2E00B}">
+									<Language>SFX</Language>
+									<AudioFile>Tire_Character_2.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="522692042"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="Tire_Character_2" ID="{786E2039-D5B3-4054-9971-8E8765F2E00B}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Tire_Character_3" ID="{A458D6C9-0A59-46CB-8B41-2565A6AAD3A5}" ShortID="805047387">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5D85CD30-2287-45B5-9188-43F16199D017}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{49103256-331E-4710-A236-CEDDD860CDED}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Tire_Character_3" ID="{313A15EB-2736-45D5-810D-DFE2A3936133}">
+									<Language>SFX</Language>
+									<AudioFile>Tire_Character_3.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="75364297"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="Tire_Character_3" ID="{313A15EB-2736-45D5-810D-DFE2A3936133}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+					<ObjectLists/>
+				</RandomSequenceContainer>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

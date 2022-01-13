@@ -4,6 +4,7 @@
 		<UserProjectSettings Name="" ID="{29136497-B690-44CC-BB91-6559A6885C82}">
 			<PropertyList>
 				<Property Name="Event Action List\{64FB4A55-3565-4EF4-9373-178BCD0819AE}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{CCA0518E-8110-4F0B-A6E0-C51E5FB158F5}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="EventView\FilterMode1" Type="int32" Value="2"/>
 				<Property Name="ExternalSourcesInputPath" Type="string">
 					<ValueList>
@@ -24,7 +25,7 @@
 				<Property Name="GenerateSoundBanks\x64_SelectedPlatforms" Type="string" Value=""/>
 				<Property Name="GenerateSoundBanks\x64_SelectedSoundBanks" Type="string" Value=""/>
 				<Property Name="HardwareController\CurrentSession" Type="string" Value="{2451DD2E-A7B2-45E6-B93B-6F49B9B887AD}"/>
-				<Property Name="HardwareController\{2451DD2E-A7B2-45E6-B93B-6F49B9B887AD}\x64_ActiveGroups" Type="string" Value="UeU8hRYtbEyhn1X03lNCTgEnnan/////c++NyTCCZE6y/daVZlCPdQEnnan/////"/>
+				<Property Name="HardwareController\{2451DD2E-A7B2-45E6-B93B-6F49B9B887AD}\x64_ActiveGroups" Type="string" Value="c++NyTCCZE6y/daVZlCPdQEnm6v/////UeU8hRYtbEyhn1X03lNCTgEnm6v/////"/>
 				<Property Name="MeterView\LastObject1" Type="string" Value="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}"/>
 				<Property Name="MeterView\MeterMode1" Type="int32" Value="1"/>
 				<Property Name="MeterView\MeterMode1Viewpoint0" Type="int32" Value="1"/>
@@ -56,7 +57,7 @@
 				<Property Name="ProjectExplorer\x64_Expanded_21_1" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\x64_Expanded_22_1" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\x64_Expanded_2_1" Type="string" Value=""/>
-				<Property Name="ProjectExplorer\x64_Expanded_3_1" Type="string" Value="107WMXoGa0GxjFvmHkieh79xUOaFy4tPr8lxpw1N2hM="/>
+				<Property Name="ProjectExplorer\x64_Expanded_3_1" Type="string" Value="107WMXoGa0GxjFvmHkieh1XMIXA+MDVDpIitMCy5lGM="/>
 				<Property Name="ProjectExplorer\x64_Expanded_4_1" Type="string" Value="XjbesC28MUO3/wp+LPrxDA=="/>
 				<Property Name="ProjectExplorer\x64_Expanded_5_1" Type="string" Value="YP2K6WOJGUOzwGs+WMhWJrNAaNDsO61OpDXm0pwaYiA="/>
 				<Property Name="ProjectExplorer\x64_Expanded_6_1" Type="string" Value=""/>

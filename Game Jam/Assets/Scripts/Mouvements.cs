@@ -61,6 +61,11 @@ public class Mouvements : MonoBehaviour
 
     //Variable pour les commandes inversés
     public bool invertedCommands = false;
+
+    //pour le son
+    public AudioClip playerSaute;
+    public AudioClip playerDash;
+    private static AudioSource audioSrc;
     
     private GameObject gameManager;
 
@@ -108,6 +113,9 @@ public class Mouvements : MonoBehaviour
         float correctHeight = controller.center.y + controller.skinWidth;
         // set the controller center vector:
         controller.center = new Vector3(0, correctHeight, 0);
+
+        //cherche le audio source
+        audioSrc = GetComponent<AudioSource>();
     }
 
 
@@ -233,6 +241,9 @@ public class Mouvements : MonoBehaviour
         if (JumpBool == true && controller.isGrounded){
             //Il peut sauter
            playerVelocity.y += jumpForce * Time.deltaTime;  
+
+           // //joue le son
+                audioSrc.PlayOneShot(playerSaute);
         }
         //Si le joueur n'appuie pas sur espace et qu'il est au sol
         else if (JumpBool == false && controller.isGrounded)
@@ -261,6 +272,9 @@ public class Mouvements : MonoBehaviour
             //Le saut est pris en compte dans une variable
             multipleJumpCounter ++;
 
+            // //joue le son
+                audioSrc.PlayOneShot(playerSaute);
+
         //Si le joueur appuie sur espace et si il a touche le mur
         }else if(wallTouched > 0 && JumpBool == true)
         {
@@ -268,6 +282,9 @@ public class Mouvements : MonoBehaviour
             playerVelocity.y += doubleJumpForceWall * Time.deltaTime;
             //On detecte qu'il a saute du mur
             wallTouched --;
+
+            // //joue le son
+                audioSrc.PlayOneShot(playerSaute);
         }
 
         //Si le compteur de saut est plus grand que 1
@@ -324,6 +341,9 @@ public class Mouvements : MonoBehaviour
     private void DashCharacter(InputAction.CallbackContext context){
         dashBool = true;
         Invoke("DashCharacterCanceled", 0.2f);
+
+        // //joue le son
+                audioSrc.PlayOneShot(playerDash);
     }
     private void DashCharacterCanceled(){
         dashBool = false;

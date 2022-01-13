@@ -19,6 +19,7 @@ TagManager:
   - CheckPoint
   - Spikes
   - TrouArbre
+  - BoiteConvoyeur
   layers:
   - Default
   - TransparentFX

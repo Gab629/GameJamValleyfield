@@ -29,6 +29,9 @@ public class EnnemyTower : MonoBehaviour
 
     private GameObject gameManager;
 
+    //TODO: variable public pour l'Animator
+    private Animator animator;
+
     // ============================== **
     // Methode Start()
     // ============================== **
@@ -36,6 +39,7 @@ public class EnnemyTower : MonoBehaviour
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
         gameManager = GameObject.Find("GameManager");
+        animator = gameObject.GetComponent<Animator>();
         RotateEnemyRight();
         AttackDetector();
     }
@@ -46,8 +50,15 @@ public class EnnemyTower : MonoBehaviour
     void Update() {
         float distance = Vector3.Distance(transform.position, target.position);
 
+        animator.SetBool("idle", true);
+        animator.SetBool("lancer", false);
+
         if (gameManager.GetComponent<GameManager>().isPlaying) {
             if (isSeeingPlayer) {
+                
+                animator.SetBool("idle", false);
+                animator.SetBool("lancer", true);
+
                 if (target.position.x > transform.position.x) {
                     // vers la droite
                     transform.rotation = Quaternion.Euler(0,0,0);

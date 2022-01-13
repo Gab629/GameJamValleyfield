@@ -27,14 +27,13 @@ public class EnnemyTower : MonoBehaviour
 
     private Vector2 throwDirection;
 
-    private GameObject gameManager;
+
     // ============================== **
     // Methode Start()
     // ============================== **
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
-        gameManager = GameObject.Find("GameManager");
         RotateEnemyRight();
         AttackDetector();
     }
@@ -43,39 +42,36 @@ public class EnnemyTower : MonoBehaviour
     // Methode Update()
     // ============================== **
     void Update() {
+        float distance = Vector3.Distance(transform.position, target.position);
 
-        if (gameManager.GetComponent<GameManager>().isPlaying) {
-            float distance = Vector3.Distance(transform.position, target.position);
+        if (isSeeingPlayer) {
+             if (target.position.x > transform.position.x) {
+                // vers la droite
+                transform.rotation = Quaternion.Euler(0,0,0);
+                slider.direction = Slider.Direction.LeftToRight;
+                throwDirection = new Vector2(1,0);
 
-            if (isSeeingPlayer) {
-                if (target.position.x > transform.position.x) {
-                    // vers la droite
-                    transform.rotation = Quaternion.Euler(0,0,0);
-                    slider.direction = Slider.Direction.LeftToRight;
-                    throwDirection = new Vector2(1,0);
+            } else {
+                // vers la gauche
+                transform.rotation = Quaternion.Euler(0,180,0);
+                slider.direction = Slider.Direction.RightToLeft;
+                throwDirection = new Vector2(-1,0);
+            }
 
-                } else {
-                    // vers la gauche
-                    transform.rotation = Quaternion.Euler(0,180,0);
-                    slider.direction = Slider.Direction.RightToLeft;
-                    throwDirection = new Vector2(-1,0);
-                }
+            // Detecte si le joueur est sortie du champ de vision
+            if (distance > attackRange) {
+                isSeeingPlayer = false;
+                Invoke("RotateEnemyLeft", 2f); 
+                Debug.Log("joueur perdu");
 
-                // Detecte si le joueur est sortie du champ de vision
-                if (distance > attackRange) {
-                    isSeeingPlayer = false;
-                    Invoke("RotateEnemyLeft", 2f); 
+            }
 
-                }
-
-                // Determine si le gameObject peut attaquer
-                if (isThrowing) {
-                    Attack();
-                    isThrowing = false;
-                }
-            }  
+            // Determine si le gameObject peut attaquer
+            if (isThrowing) {
+                Attack();
+                isThrowing = false;
+            }
         }
-
 
     }
 

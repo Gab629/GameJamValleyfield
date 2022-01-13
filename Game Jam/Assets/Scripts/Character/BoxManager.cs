@@ -22,8 +22,6 @@ public class BoxManager : MonoBehaviour
     private float characterHealth;
     [SerializeField]private bool isCharacterDead;
 
-    private GameObject gameManager;
-
 
     void Awake() {
         inputActions = new InputSystem();
@@ -36,7 +34,6 @@ public class BoxManager : MonoBehaviour
     void Start()
     {
         playerInput = GetComponent<PlayerInput>();
-        gameManager = GameObject.Find("GameManager");
 
         hasBox = true;
     }
@@ -56,16 +53,13 @@ public class BoxManager : MonoBehaviour
     
 
     private void CarryButton(InputAction.CallbackContext context){
-        if (gameManager.GetComponent<GameManager>().isPlaying) {
-            if (hasBox) {
-                PuttingDown();
+        if (hasBox) {
+            PuttingDown();
 
-            } else if (!hasBox && canTakeBox){
-                TakeBox();
+        } else if (!hasBox && canTakeBox){
+            TakeBox();
 
-            }
         }
-
     }
 
     private void PuttingDown() {

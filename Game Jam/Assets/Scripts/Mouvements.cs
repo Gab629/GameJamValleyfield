@@ -19,6 +19,7 @@ public class Mouvements : MonoBehaviour
     private Vector3 playerVelocity;
     private Rigidbody rbCharacter;
     private Animator animCharacter;
+
     
 
     // Variables pour la detection de sol/murs, la gravite et le statut du personnage
@@ -72,6 +73,11 @@ public class Mouvements : MonoBehaviour
     [SerializeField] private float stepSpeed = 10f; //vitesse que le son joue quand le joueur marche
     
     private GameObject gameManager;
+    public GameObject tourTombeDroite;
+    public GameObject tourTombeGauche;
+    public GameObject trouArbre;
+
+
 
     //------- Cette fonction est appelle avant le start -------//
     private void Awake()
@@ -136,6 +142,8 @@ public class Mouvements : MonoBehaviour
             Dash(); //COMP DASH
             WallSlide(); //COMP WALLSLIDE
         }
+
+        
     }
 
 
@@ -165,6 +173,12 @@ public class Mouvements : MonoBehaviour
         {
             onConveyor = 1;
             //playerSpeed = 0.1f;
+        }else if(collision.transform.tag == "TourTombe"){
+            Destroy(tourTombeDroite);
+            Destroy(tourTombeGauche);
+        }else if(collision.transform.tag == "TrouArbre"){
+            Destroy(trouArbre);
+            
         }
     }
 
@@ -276,6 +290,7 @@ public class Mouvements : MonoBehaviour
 
         //Si le joueur appuie sur espace, si il lui reste des sauts et qu'il a deja relacher espace une fois
         if(JumpBool == true && multipleJump >= 0 && jumpCancelled && wallTouched <= 0){
+
             //Le joueur peut sauter a nouveau dans les airs
             playerVelocity.y += doubleJumpForce * Time.deltaTime;
             //Le saut est pris en compte dans une variable
@@ -315,6 +330,11 @@ public class Mouvements : MonoBehaviour
 
         //Si le rayon est en train de toucher un mur
         if(hit.transform.tag == "Wall" && input.x != 0){
+
+             if(gameObject.GetComponent<BoxManager>().hasBox == true){
+               gameObject.GetComponent<BoxManager>().PuttingDown(); 
+            }
+              
 
             //Le joueur descend plus lentement
             playerVelocity.y = wallSlideSpeed * Time.deltaTime;
@@ -356,6 +376,10 @@ public class Mouvements : MonoBehaviour
 
         if(dashBool == true && input.x != 0){
             animCharacter.SetBool("dash", true);
+
+              if(gameObject.GetComponent<BoxManager>().hasBox == true){
+               gameObject.GetComponent<BoxManager>().PuttingDown(); 
+            }
         }
         else
         {

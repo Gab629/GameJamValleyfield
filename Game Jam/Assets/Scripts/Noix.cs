@@ -11,5 +11,9 @@ public class Noix : MonoBehaviour
             other.GetComponent<Ennemy>().TakeDamage(damageAmount);
             Destroy(gameObject);
         }
+
+        if (other.tag == "Ground") {
+            Destroy(gameObject);
+        }
     }
 }

@@ -28,6 +28,8 @@ public class EnnemyPatrol : MonoBehaviour
     public Slider slider;
     public GameObject attackCollider;
 
+    private GameObject GameManager;
+
 
     // ============================== **
     // Methode Start()
@@ -35,6 +37,7 @@ public class EnnemyPatrol : MonoBehaviour
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
+        GameManager = GameObject.Find("GameManager");
     }
 
     // ============================== **
@@ -42,7 +45,10 @@ public class EnnemyPatrol : MonoBehaviour
     // ============================== **
     void Update()
     {
-        CheckState();
+        if (GameManager.GetComponent<GameManager>().isPlaying) {
+            CheckState(); 
+        }
+
     }
 
     // ============================== **

@@ -61,6 +61,7 @@ public class ThrowObject : MonoBehaviour
     void Start(){
         animCharacter = GetComponent<Animator>();
         gameManager = GameObject.Find("GameManager");
+        animCharacter = GetComponent<Animator>();
     }
 
 
@@ -133,7 +134,7 @@ public class ThrowObject : MonoBehaviour
 
     //------- Cette fonction sert a lancer une noix dans la direction visee par le joueur -------//
     private void ThrowNut(){
-        
+        animCharacter.SetBool("spitNut", true);
         
         if(nutLoaded == true && isThrowing == 1 && nombreDeNoixMax >= 1)
         {
@@ -163,7 +164,7 @@ public class ThrowObject : MonoBehaviour
             
         }else{
             animCharacter.SetBool("spitNut", false);
-        }  
+        }    
     }
 
 

@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 67016818c3e6cd4ab73204a64e8c57ed
     GuidInternal: 
-    m_lastTime: -8585595065450588888
+    m_lastTime: -8585595054675422895
     List:
     - name: Main
       guid: 914ec0cfb809d84393fb3c6ba57ca464
@@ -94,7 +94,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 1509093024fa894c9fa157a2b69a392a
     GuidInternal: 
-    m_lastTime: -8585595065450838227
+    m_lastTime: -8585595054675923350
     List:
     - name: Footsteps
       guid: 70dc4a0eb04e7543ad7046fba0eda4e4
@@ -170,7 +170,7 @@ MonoBehaviour:
     ParentPath: Switches\Default Work Unit
     guid: c56eb04c5e8a0b4e996ee3e60df9c9fa
     GuidInternal: 
-    m_lastTime: -8585595065450588888
+    m_lastTime: -8585595054675402885
     List:
     - name: Footsteps
       guid: 56d114f310f6a247816620af1907e47b

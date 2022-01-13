@@ -62,7 +62,7 @@ public class Mouvements : MonoBehaviour
     //Variable pour les commandes inversés
     public bool invertedCommands = false;
     
-
+    private GameObject gameManager;
 
     //------- Cette fonction est appelle avant le start -------//
     private void Awake()
@@ -102,7 +102,8 @@ public class Mouvements : MonoBehaviour
         rbCharacter = GetComponent<Rigidbody>();
         animCharacter = GetComponent<Animator>();
 
-        
+        gameManager = GameObject.Find("GameManager");
+
         // calculate the correct vertical position:
         float correctHeight = controller.center.y + controller.skinWidth;
         // set the controller center vector:
@@ -114,10 +115,12 @@ public class Mouvements : MonoBehaviour
     //------- Update is called once per frame -------//
     void Update()
     {   
-        Movements();
-        Gliding(); //COMP GLIDING
-        Dash(); //COMP DASH
-        WallSlide(); //COMP WALLSLIDE
+        if (gameManager.GetComponent<GameManager>().isPlaying) {
+            Movements();
+            Gliding(); //COMP GLIDING
+            Dash(); //COMP DASH
+            WallSlide(); //COMP WALLSLIDE
+        }
     }
 
 
@@ -125,9 +128,11 @@ public class Mouvements : MonoBehaviour
      //------- Cette fonction est appele une fois ou plusieurs fois par frame (meilleur pour la physique) -------//
     void FixedUpdate()
     {
-        Jump();
-        DoubleJump(); //COMP DOUBLE JUMP
-        OnConveyor();
+        if (gameManager.GetComponent<GameManager>().isPlaying) {
+            Jump();
+            DoubleJump(); //COMP DOUBLE JUMP
+            OnConveyor();
+        }
 
     }
 

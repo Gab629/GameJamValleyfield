@@ -35,7 +35,9 @@ public class ThrowObject : MonoBehaviour
     private float previousValue;
     private Vector2 throwDirection;
 
-
+    //pour le son
+    public AudioClip playerSpit;
+    private static AudioSource audioSrc;
 
     //Variables pour le nouveau input system
     private InputSystem inputActions;
@@ -62,6 +64,9 @@ public class ThrowObject : MonoBehaviour
         animCharacter = GetComponent<Animator>();
         gameManager = GameObject.Find("GameManager");
         animCharacter = GetComponent<Animator>();
+
+        //cherche le audio source
+        audioSrc = GetComponent<AudioSource>();
     }
 
 

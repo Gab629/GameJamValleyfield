@@ -11,6 +11,7 @@ public class ThrowObject : MonoBehaviour
     public GameObject imageNut;
     public GameObject nut;
     public GameObject nutFixed;
+    private Animator animCharacter;
     
 
 
@@ -59,6 +60,7 @@ public class ThrowObject : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.Find("GameManager");
+        animCharacter = GetComponent<Animator>();
     }
 
     //------- Cette fonction detecte la direction dont le joueur se deplace -------//
@@ -120,7 +122,9 @@ public class ThrowObject : MonoBehaviour
             //imageNut.SetActive(true);
             nutLoaded = true;
             nombreDeNoixMax ++;
-            
+            animCharacter.SetBool("eatNut", true);
+        }else{
+            animCharacter.SetBool("eatNut", false);
         }
     }
 
@@ -128,7 +132,7 @@ public class ThrowObject : MonoBehaviour
 
     //------- Cette fonction sert a lancer une noix dans la direction visee par le joueur -------//
     private void ThrowNut(){
-        
+        animCharacter.SetBool("spitNut", true);
         
         if(nutLoaded == true && isThrowing == 1 && nombreDeNoixMax >= 1)
         {
@@ -154,7 +158,9 @@ public class ThrowObject : MonoBehaviour
             }
             
             
-        }  
+        }else{
+            animCharacter.SetBool("spitNut", false);
+        }    
     }
 
 

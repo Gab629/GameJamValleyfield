@@ -1732,6 +1732,62 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2c6b645f70928f84f924ec10730b50fc, type: 3}
   m_PrefabInstance: {fileID: 830744536}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &169675910
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 169675912}
+  - component: {fileID: 169675911}
+  m_Layer: 0
+  m_Name: WwiseGlobal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &169675911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 169675910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f541bd30a1d72f4a881fb6330fb358e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InitializationSettings: {fileID: 11400000, guid: e82d6810b7d7b064b84cf89fd94db7c5, type: 2}
+  basePath: 
+  language: 
+  defaultPoolSize: 0
+  lowerPoolSize: 0
+  streamingPoolSize: 0
+  memoryCutoffThreshold: 0
+  monitorPoolSize: 0
+  monitorQueuePoolSize: 0
+  callbackManagerBufferSize: 0
+  spatialAudioPoolSize: 0
+  maxSoundPropagationDepth: 0
+  engineLogging: 0
+--- !u!4 &169675912
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 169675910}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 24
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &188970176
 GameObject:
   m_ObjectHideFlags: 0
@@ -23038,7 +23094,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   imageNut: {fileID: 398956762}
   nut: {fileID: 8132072338666957850, guid: 3cfdc88ec4a7d484d92915c7be752120, type: 3}
-  nutFixed: {fileID: 919132149155446097, guid: 5f955b56a2a150649ab1dbc1b4632c18, type: 3}
+  nutFixed: {fileID: 3624599045097335366, guid: dbf3ed96124236249a6e40b30ce4cdfb, type: 3}
   nutLoaded: 0
 --- !u!114 &1133907314
 MonoBehaviour:
@@ -33414,7 +33470,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4109245540805341436, guid: dbf3ed96124236249a6e40b30ce4cdfb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.644
+      value: 0.135
       objectReference: {fileID: 0}
     - target: {fileID: 4109245540805341436, guid: dbf3ed96124236249a6e40b30ce4cdfb, type: 3}
       propertyPath: m_LocalPosition.z

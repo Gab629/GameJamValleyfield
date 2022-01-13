@@ -20,6 +20,7 @@ TagManager:
   - Spikes
   - TrouArbre
   - BoiteConvoyeur
+  - TourTombe
   layers:
   - Default
   - TransparentFX

@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: c8d406708a57ab4f8ac44d1e6f26379a
     GuidInternal: 
-    m_lastTime: -8585595470911178721
+    m_lastTime: -8585595451199607558
     List:
     - name: Main
       guid: d57a8c0ac8152f46bdb7ef4120a2e8f2
@@ -94,7 +94,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 5e36deb02dbc3143b7ff0a7e2cfaf10c
     GuidInternal: 
-    m_lastTime: -8585595470911929408
+    m_lastTime: -8585595451199747683
     List:
     - name: Footsteps
       guid: 554afb646535f44e9373178bcd0819ae
@@ -113,6 +113,23 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 1.286875
       minDuration: 0.181708
+    - name: Tire
+      guid: 8e51a0cc10810b4fa6e0c51e5fb158f5
+      id: 3006696107
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 5e36deb02dbc3143b7ff0a7e2cfaf10c
+      - ElementName: Tire
+        ObjectType: 3
+        guid: 8e51a0cc10810b4fa6e0c51e5fb158f5
+      Path: Events\Default Work Unit\Tire
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     PathAndIcons:

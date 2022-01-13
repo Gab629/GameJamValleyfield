@@ -3,7 +3,10 @@
 	<UserProjectSettingsInfo>
 		<UserProjectSettings Name="" ID="{09B3EAC9-E6E8-4648-90F0-07167D7554AF}">
 			<PropertyList>
+				<Property Name="AudioFilesImporter\Path" Type="string" Value="C:\Users\azpma\Desktop\GameJam\Sons\Footstep\Correction\WAV\"/>
 				<Property Name="Event Action List\{06EF85D8-5C1A-4DD3-91D9-C8DFA6A8EEA2}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{0E4ADC70-4EB0-4375-AD70-46FBA0EDA4E4}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{6A73B1C8-4A38-4149-813F-EA2DB1825B25}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="EventView\FilterMode1" Type="int32" Value="2"/>
 				<Property Name="ExternalSourcesInputPath" Type="string">
 					<ValueList>

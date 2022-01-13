@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{30090915-FA24-4C89-9FA1-57A2B69A392A}" SchemaVersion="103">
 	<Events>
-		<WorkUnit Name="Default Work Unit" ID="{30090915-FA24-4C89-9FA1-57A2B69A392A}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{30090915-FA24-4C89-9FA1-57A2B69A392A}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="Footsteps" ID="{0E4ADC70-4EB0-4375-AD70-46FBA0EDA4E4}">
+					<ChildrenList>
+						<Action Name="" ID="{FCFB0C92-7BB8-4686-8431-E0AE773162C3}" ShortID="437918478">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Footsteps" ID="{9A3CEADB-B610-46FB-AE07-3E297A71D060}" WorkUnitID="{A9F9DFBA-2A8B-4E3A-A0D3-E685DFF99C5F}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Spit" ID="{6A73B1C8-4A38-4149-813F-EA2DB1825B25}">
+					<ChildrenList>
+						<Action Name="" ID="{1A3666C2-2F21-4C5E-B4ED-138B130B3766}" ShortID="443784268">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Spit" ID="{57AA6310-5EC0-4573-B64E-097A9E911A04}" WorkUnitID="{A9F9DFBA-2A8B-4E3A-A0D3-E685DFF99C5F}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
 	</Events>
 </WwiseDocument>

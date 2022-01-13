@@ -18,6 +18,7 @@ public class Mouvements : MonoBehaviour
     public PlayerInput playerInput;
     private Vector3 playerVelocity;
     private Rigidbody rbCharacter;
+    private Animator animCharacter;
     
 
     // Variables pour la detection de sol/murs, la gravite et le statut du personnage
@@ -32,10 +33,10 @@ public class Mouvements : MonoBehaviour
   
 
     //Variables pour toutes les forces et vitesses concernant le personnage
-    private float jumpForce = 300f;
+    private float jumpForce = 200f;
     private float doubleJumpForce = 250f;
-    private float doubleJumpForceWall = 300f;
-    private float wallSlideSpeed = -300f;
+    private float doubleJumpForceWall = 200f;
+    private float wallSlideSpeed = -100f;
     private float fallingSpeed = 5f;
     private float playerSpeed = 3f;
     public Vector2 input;
@@ -50,7 +51,7 @@ public class Mouvements : MonoBehaviour
 
     //Variable pour le dash
     private float isDashing;
-     private float dashSpeed = 5f;
+     private float dashSpeed = 2f;
     private bool dashBool;
 
     //Variable pour le gliding
@@ -60,8 +61,7 @@ public class Mouvements : MonoBehaviour
 
     //Variable pour les commandes inversés
     public bool invertedCommands = false;
-
-
+    
 
 
     //------- Cette fonction est appelle avant le start -------//
@@ -100,6 +100,7 @@ public class Mouvements : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         controller = GetComponent<CharacterController>();
         rbCharacter = GetComponent<Rigidbody>();
+        animCharacter = GetComponent<Animator>();
 
         
         // calculate the correct vertical position:
@@ -216,6 +217,13 @@ public class Mouvements : MonoBehaviour
     //------- Cette fonction fait sauter le personnage -------//
     private void Jump()
     {
+
+        if(JumpBool == true){
+            animCharacter.SetBool("jump", true);
+        }else{
+            animCharacter.SetBool("jump", false);
+        }
+
         //Si le joueur appuie sur espace et qu'il est au sol
         if (JumpBool == true && controller.isGrounded){
             //Il peut sauter
@@ -278,10 +286,11 @@ public class Mouvements : MonoBehaviour
         //Sert a detecter la collision du rayon
         RaycastHit hit;
         //Cree un rayon invisible devant le personnage
-        Physics.Raycast(transform.position, transform.forward, out hit, 0.7f);
-        
+        Physics.Raycast(transform.position, transform.forward, out hit, 0.30f);
+
         //Si le rayon est en train de toucher un mur
-        if(hit.transform.tag == "Wall"){
+        if(hit.transform.tag == "Wall" && input.x != 0){
+
             //Le joueur descend plus lentement
             playerVelocity.y = wallSlideSpeed * Time.deltaTime;
             //On detecte que le joueur a touche le mur (pour un jump)
@@ -317,6 +326,14 @@ public class Mouvements : MonoBehaviour
     //------- Cette fonction permet au personnage de dasher -------//
     private void Dash(){
 
+        if(dashBool == true && input.x != 0){
+            animCharacter.SetBool("dash", true);
+        }
+        else
+        {
+            animCharacter.SetBool("dash", false);
+        }
+
         if(dashBool == true && !invertedCommands)
         {
             move = new Vector3(input.x, 0, 0) * dashSpeed;
@@ -334,12 +351,20 @@ public class Mouvements : MonoBehaviour
     private void MovementsCharacter(InputAction.CallbackContext context)
     {
         input = context.ReadValue<Vector2>();
+       
     }
 
 
 
 //------- Cette fonction fait bouger le personnage -------//
     private void Movements(){
+
+        if(input.x != 0){
+            animCharacter.SetBool("peutCourir", true);
+        }else{
+            animCharacter.SetBool("peutCourir", false);
+        }
+
         //Verifie si le joueur touche le sol
         groundedPlayer = controller.isGrounded;
 

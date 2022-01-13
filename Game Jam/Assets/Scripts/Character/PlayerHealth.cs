@@ -44,11 +44,6 @@ public class PlayerHealth : MonoBehaviour
     void Update()
     {
         CheckHealth();
-
-        if(isDead == true){
-            
-            Invoke("RespawnCharacter", 3f);
-        }
         
     }
 
@@ -68,7 +63,7 @@ public class PlayerHealth : MonoBehaviour
         // Detruit le gameObject s'il n'a plus de vie
         if (health <= 0) {
             gameObject.SetActive(false);
-            isDead = true;
+            Invoke("RespawnCharacter", 3f);
         }
 
         // La vie ne peut depasser le maximum de vie
@@ -76,6 +71,7 @@ public class PlayerHealth : MonoBehaviour
             health = maxHealth;
         }
     }
+
 
     // ============================== **
     // Methode CalculateHealth()
@@ -121,8 +117,8 @@ public class PlayerHealth : MonoBehaviour
     // Fait revivre le joueur apres sa mort
     // ============================== **
     private void RespawnCharacter(){
-            character.SetActive(true);
             character.transform.position = positionCheckpoint;
+            character.SetActive(true);
             isDead = false;
             health = 250f;
             GetComponent<BoxManager>().ResetBox();

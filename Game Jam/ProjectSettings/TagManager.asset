@@ -18,6 +18,7 @@ TagManager:
   - Box
   - CheckPoint
   - Spikes
+  - TrouArbre
   - BoiteConvoyeur
   layers:
   - Default

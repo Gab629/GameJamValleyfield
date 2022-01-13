@@ -136,12 +136,14 @@ public class ThrowObject : MonoBehaviour
             Vector3 positionNutRight = new Vector3(gameObject.transform.position.x + 1, gameObject.transform.position.y, gameObject.transform.position.z);
             
             if(previousValue == 1){
+                Debug.Log("nut in yo face");
                 Instantiate(nut, positionNutRight, gameObject.transform.rotation).GetComponent<Rigidbody>().AddForce(new Vector3(1,0,0) * 1000f);
                 Invoke("DestroyNut", 2f);
                 imageNut.SetActive(false);
             }
             else if(previousValue == -1)
             {
+                Debug.Log("nut in yo face");
                 Instantiate(nut, positionNutLeft, gameObject.transform.rotation).GetComponent<Rigidbody>().AddForce(new Vector3(-1,0,0) * 1000f); 
                 Invoke("DestroyNut", 2f);
                 imageNut.SetActive(false);
